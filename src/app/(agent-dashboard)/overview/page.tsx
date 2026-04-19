@@ -1,8 +1,7 @@
 
-import OverviewsPage from '@/components/AgentDashboard/Overview'
-import React from 'react'
-
+import OverviewsPage from '@/components/AgentDashboard/Overview';
 const page = () => {
+
     return (
         <div><OverviewsPage /></div>
     )
