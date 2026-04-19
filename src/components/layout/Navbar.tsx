@@ -49,7 +49,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden lg:flex items-center gap-8">
+                <nav className="hidden lg:flex flex-1 items-center gap-8">
                     {links.map((link) => {
                         const isActive = pathname === link.href;
 
@@ -70,17 +70,16 @@ export default function Navbar() {
                 </nav>
 
                 {/* Desktop Actions */}
-                <div className="hidden md:flex">
+                <div >
                     <NavActions />
+                    <Button
+                        type="text"
+                        icon={<MenuOutlined className="text-xl" />}
+                        className="md:hidden!"
+                        onClick={() => setDrawerOpen(true)}
+                    />
                 </div>
 
-                {/* Mobile Hamburger */}
-                <Button
-                    type="text"
-                    icon={<MenuOutlined className="text-xl" />}
-                    className="md:hidden!"
-                    onClick={() => setDrawerOpen(true)}
-                />
             </div>
 
             {/* Mobile Drawer */}

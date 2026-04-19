@@ -47,7 +47,7 @@ export default function NavActions() {
     }
 
     return (
-        <div className="flex items-center gap-3">
+        <div className="items-center gap-3 hidden md:flex">
             <Button
                 size="large"
                 className="!border-[#1a3c6e] !text-[#1a3c6e] !font-semibold !rounded-md"

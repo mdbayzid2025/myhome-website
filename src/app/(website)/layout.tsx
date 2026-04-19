@@ -4,8 +4,6 @@ import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
-import { headers } from "next/headers";
-import { getSearchParams } from "@/lib/getSearchParams";
 
 
 const poppins = Poppins({
@@ -25,8 +23,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const searchParams = await getSearchParams();
-  console.log("searchParams:", searchParams);
+
   return (
     <html lang="en">
       <body className={`${poppins.variable}  antialiased poppins`}>

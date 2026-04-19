@@ -47,6 +47,14 @@ export default function DashboardSidebar({
     { key: "password-security", icon: <LockOutlined />, label: "Password & Security" },
   ];
 
+  const handleSetQuery = (value: boolean) => {
+  const params = new URLSearchParams(window.location.search);
+
+  params.set("collapsed", String(value));
+
+  router.replace(`?${params.toString()}`, { scroll: false });
+};
+
   const handleLogOut = () => {
     toast.warning("Are you sure you want to log out?", {
       duration: 5000,
@@ -84,7 +92,7 @@ export default function DashboardSidebar({
     <Sider
       collapsible
       collapsed={collapsed}
-      onCollapse={onCollapse}
+      onCollapse={handleSetQuery}
       width={260}
       collapsedWidth={72}
       trigger={null}
