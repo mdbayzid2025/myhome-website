@@ -1,4 +1,4 @@
-import { getImageUrl } from "@/utils/getImageUrl";
+import { imgUrl } from "./imgUrl";
 
 interface ImageItem {
     id: string;
@@ -13,7 +13,7 @@ export async function createImageItemFromUrl(
 ): Promise<ImageItem> {
     console.log(url);
 
-    const response = await fetch(getImageUrl(url));
+    const response = await fetch(imgUrl + url);
 
 
     if (!response.ok) {

@@ -1,9 +1,11 @@
 import ChooseRoleForm from '@/components/auth/Signup/ChooseRoleForm'
 import { Metadata } from 'next'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const page = () => {
-    return <ChooseRoleForm />
+    return <Suspense fallback={<div>Loading...</div>}>
+        <ChooseRoleForm />
+    </Suspense>
 }
 
 export default page

@@ -10,6 +10,8 @@ import Footer from "@/components/layout/Footer";
 import './globals.css'
 import { ConfigProvider } from "antd";
 import { mainTheme } from "./theme";
+import { headers } from "next/headers";
+
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -36,16 +38,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={`${poppins.variable}  antialiased poppins`}>
         <ConfigProvider theme={mainTheme}>
-        <AntdRegistry>
-          <Navbar />
-          <Toaster position="top-right" duration={1500} />
-          {children}
-          <Footer />
-        </AntdRegistry>
+          <AntdRegistry>
+            <Navbar />
+            <Toaster position="top-right" duration={1500} />
+            {children}
+            <Footer />
+          </AntdRegistry>
         </ConfigProvider>
       </body>
     </html>

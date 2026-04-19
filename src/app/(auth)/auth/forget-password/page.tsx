@@ -1,11 +1,11 @@
 import ForgetPassword from "@/components/auth/ForgetPass";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
   return (
-    <div>
+    <Suspense fallback={<div>Loading...</div>}>
       <ForgetPassword />
-    </div>
+    </Suspense>
   );
 };
 

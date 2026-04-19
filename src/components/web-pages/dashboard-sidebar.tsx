@@ -2,15 +2,15 @@
 
 import useBaseUrl from "@/hooks/useBaseUrl";
 import {
-  BarChartOutlined,
-  BookOutlined,
-  FileTextOutlined,
-  FormOutlined,
-  InboxOutlined,
+  BellOutlined,
+  HeartOutlined,
   LeftOutlined,
+  LockOutlined,
   LogoutOutlined,
   RightOutlined,
-  TeamOutlined
+  SearchOutlined,
+  SendOutlined,
+  UserOutlined
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, Tag, Typography } from "antd";
 import { usePathname, useRouter } from "next/navigation";
@@ -39,13 +39,12 @@ export default function DashboardSidebar({
   }, [pathname]);
 
   const menuItems = [
-    { key: "overview", icon: <BarChartOutlined />, label: "Overview" },
-    { key: "save-properties", icon: <BarChartOutlined />, label: "Saved Properties" },
-    { key: "saved-search", icon: <TeamOutlined />, label: "Saved Searches" },
-    { key: "enquiries", icon: <FormOutlined />, label: "My Enquiries" },
-    { key: "alerts-notifications", icon: <FileTextOutlined />, label: "Alerts & Notifications" },
-    { key: "profile", icon: <InboxOutlined />, label: "Personal Information" },
-    { key: "password-security", icon: <BookOutlined />, label: "Password & Security" },
+    { key: "save-properties", icon: <HeartOutlined className="fill-red-600!" />, label: "Saved Properties" },
+    { key: "saved-search", icon: <SearchOutlined />, label: "Saved Searches" },
+    { key: "enquiries", icon: <SendOutlined />, label: "My Enquiries" },
+    { key: "user-notifications", icon: <BellOutlined />, label: "Alerts & Notifications" },
+    { key: "profile", icon: <UserOutlined />, label: "Personal Information" },
+    { key: "password-security", icon: <LockOutlined />, label: "Password & Security" },
   ];
 
   const handleLogOut = () => {

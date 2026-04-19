@@ -9,7 +9,9 @@ const MOCK_SEARCHES: SavedSearch[] = [
 export default function SavedSearchesPage() {
   return (
     <div className="">
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Saved Searches</h1>
+      <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-5">
+        Saved Searches
+      </h2>
       <SavedSearchList initialData={MOCK_SEARCHES} />
     </div>
   );

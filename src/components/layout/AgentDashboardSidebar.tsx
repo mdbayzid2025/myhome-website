@@ -2,17 +2,12 @@
 
 import useBaseUrl from "@/hooks/useBaseUrl";
 import {
-    BarChartOutlined,
-    BookOutlined,
-    FileTextOutlined,
-    FormOutlined,
-    InboxOutlined,
     LeftOutlined,
     LogoutOutlined,
-    RightOutlined,
-    TeamOutlined
+    RightOutlined
 } from "@ant-design/icons";
 import { Avatar, Button, Layout, Menu, Tag, Typography } from "antd";
+import { Box, House, Lock, MessageSquare, Settings, Wallet } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -39,7 +34,12 @@ export default function AgentDashboardSidebar({
     }, [pathname]);
 
     const menuItems = [
-        { key: "overview", icon: <BarChartOutlined />, label: "Overview" },
+        { key: "overview", icon: <Box />, label: "Overview" },
+        { key: "my-listing", icon: <House />, label: "My Listings" },
+        { key: "agent-enquiries", icon: <MessageSquare />, label: "Enquiries" },
+        { key: "subscription", icon: <Wallet />, label: "Subscription & Billing" },
+        { key: "agency-profile", icon: <Settings />, label: "Agency Profile" },
+        { key: "security", icon: <Lock />, label: "Security" },
     ];
 
     const handleLogOut = () => {

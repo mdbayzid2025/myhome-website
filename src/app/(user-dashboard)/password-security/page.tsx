@@ -3,10 +3,10 @@ import DeleteAccountSection from "@/components/UserDashboard/PasswordAndSecurity
 
 export default function ChangePasswordPage() {
     return (
-        <div className="px-4 sm:px-8 py-8 sm:py-12">
-            <div className="max-w-3xl space-y-6">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Password & Security</h1>
+        <div className="">
+            <div className=" space-y-7 max-w-3xl">
                 <ChangePasswordForm />
+                <hr className="border-gray-100" />
                 <DeleteAccountSection />
             </div>
         </div>

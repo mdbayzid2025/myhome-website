@@ -1,7 +1,5 @@
 "use client";
 import Spinner from "@/components/Spinner";
-import { useGetProfileQuery } from "@/redux/feature/auth/authApi";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -16,7 +14,6 @@ export default function Home() {
       </div>
     );
   }
-  // console.log("check ", user);
   const router = useRouter();
   if (!user) {
     toast.error("Please Login to continue...");

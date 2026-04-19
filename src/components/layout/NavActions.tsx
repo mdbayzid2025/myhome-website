@@ -17,6 +17,13 @@ const userMenuItems: MenuProps["items"] = [
             </Link>
         ),
     },
+    {
+        key: "overview", label: (
+            <Link rel="noopener noreferrer" href="/overview">
+                Agent Dashboard
+            </Link>
+        ),
+    },
     { type: "divider" },
     { key: "logout", label: "Sign Out", danger: true },
 ];

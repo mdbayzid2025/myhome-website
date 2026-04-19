@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Input, Button } from "antd";
 import { toast } from "sonner";
+import { handleApiError } from "@/lib/handleApiError";
 
 function getStrength(pw: string): number {
     if (pw.length === 0) return 0;
@@ -51,14 +52,8 @@ export default function ChangePasswordForm() {
                 toast.success(response?.message || "Password updated successfully");
                 setForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
             } else {
-                
-                if (response?.error && Array.isArray(response.error)) {
-                    response.error.forEach((err: { message: string }) =>
-                        toast.error(err.message, { id: "change-password" })
-                    );
-                } else {
-                    toast.error(response?.message || "Something went wrong!", { id: "change-password" });
-                }
+
+                handleApiError(response, "change-password")
             }
         } catch (err) {
             console.error("ChangePasswordForm error:", err);
@@ -69,7 +64,7 @@ export default function ChangePasswordForm() {
     };
 
     return (
-        <div>
+        <div >
             <h2 className="text-xl font-bold text-gray-900 mb-5">Password & Security</h2>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 sm:p-6">
                 <form onSubmit={handleSubmit} className="space-y-5">

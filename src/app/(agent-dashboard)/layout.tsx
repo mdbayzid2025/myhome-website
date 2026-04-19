@@ -53,7 +53,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 </div>
 
                 {/* Page Content */}
-                <main className="flex-1 p-4 md:p-6">{children}</main>
+                <main className="flex-1 p-4 md:p-6 bg-[#F9FAFB]">{children}</main>
             </div>
         </div>
     );

@@ -1,8 +1,7 @@
 
 import EnquiryList from "@/components/UserDashboard/Enquiries";
-import type { Enquiry } from "@/types/enquiry";
 
-const MOCK_ENQUIRIES: Enquiry[] = [
+const MOCK_ENQUIRIES: any[] = [
     {
         id: "1",
         propertyTitle: "Stunning Victorian Townhouse",
@@ -26,7 +25,9 @@ const MOCK_ENQUIRIES: Enquiry[] = [
 export default function MyEnquiriesPage() {
     return (
         <div className="">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">My Enquiries</h1>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-5">
+                My Enquiries
+            </h2>
             <EnquiryList initialData={MOCK_ENQUIRIES} />
         </div>
     );

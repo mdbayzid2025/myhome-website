@@ -1,4 +1,5 @@
-import OverviewsPage from '@/components/web-pages/AgentDashboard/Overview'
+
+import OverviewsPage from '@/components/AgentDashboard/Overview'
 import React from 'react'
 
 const page = () => {
