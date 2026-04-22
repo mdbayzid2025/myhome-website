@@ -78,6 +78,7 @@ export default function Navbar() {
                         className="md:hidden!"
                         onClick={() => setDrawerOpen(true)}
                     />
+                    
                 </div>
 
             </div>

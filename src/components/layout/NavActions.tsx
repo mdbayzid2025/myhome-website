@@ -33,16 +33,25 @@ export default function NavActions() {
 
     if (isLoggedIn) {
         return (
-            <Dropdown menu={{ items: userMenuItems }} placement="bottomRight" arrow>
-                <Avatar
-                    size={42}
-                    src={user?.avatar}
-                    className="cursor-pointer border-2 border-[#1a3c6e]"
-                    style={{ backgroundColor: "#1a3c6e" }}
+            <div className="items-center gap-3 hidden md:flex">
+                <Dropdown menu={{ items: userMenuItems }} placement="bottomRight" arrow>
+                    <Avatar
+                        size={42}
+                        src={user?.avatar}
+                        className="cursor-pointer border-2 border-[#1a3c6e]"
+                        style={{ backgroundColor: "#1a3c6e" }}
+                    >
+                        U
+                    </Avatar>
+                </Dropdown>
+                <Button
+                    size="middle"                    
+                    className="bg-[#1a3c6e]! text-white!  !font-normal !rounded-md"
+                    href="/auth/login"
                 >
-                    U
-                </Avatar>
-            </Dropdown>
+                    Sign In
+                </Button>
+            </div>
         );
     }
 

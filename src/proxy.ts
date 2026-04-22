@@ -50,19 +50,19 @@ export function proxy(request: NextRequest) {
   /**
    * ❌ Not logged in → block private routes
    */
-  if (!accessToken && isPrivateRoute) {
-    const loginUrl = new URL("/auth/login", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
+  // if (!accessToken && isPrivateRoute) {
+  //   const loginUrl = new URL("/auth/login", request.url);
+  //   loginUrl.searchParams.set("redirect", pathname);
 
-    return NextResponse.redirect(loginUrl);
-  }
+  //   return NextResponse.redirect(loginUrl);
+  // }
 
   /**
    * ✅ Logged in → block auth routes
    */
-  if (accessToken && isAuthRoute) {
-    return NextResponse.redirect(new URL("/overview", request.url));
-  }
+  // if (accessToken && isAuthRoute) {
+  //   return NextResponse.redirect(new URL("/overview", request.url));
+  // }
 
   /**
    * ✅ Continue request + attach header
