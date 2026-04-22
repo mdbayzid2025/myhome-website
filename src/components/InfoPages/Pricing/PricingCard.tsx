@@ -92,7 +92,7 @@ export default function PricingCard({ plan, isAnnual }: Props) {
             {/* Features */}
             <ul className="flex flex-col gap-3 flex-1">
                 {plan.features.map((feature, i) => (
-                    <li className="flex items-center gap-2.5 text-sm">
+                    <li key={i} className="flex items-center gap-2.5 text-sm">
                         {feature.included ? (
                             <CheckOutlined className="text-[#1a3c6e] text-xs shrink-0" />
                         ) : (
