@@ -49,7 +49,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden lg:flex flex-1 items-center gap-8">
+                <nav className="hidden md:flex flex-1 md:flex-0 items-center gap-8">
                     {links.map((link) => {
                         const isActive = pathname === link.href;
 
@@ -57,7 +57,7 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`px-3 py-1.5 rounded-md font-medium text-[15px] transition-all duration-200
+                                className={`px-3 py-1.5 rounded-md font-medium text-[15px] transition-all duration-200 whitespace-nowrap
                 ${isActive
                                         ? "bg-[#1a3c6e] text-white"
                                         : "text-gray-700 hover:text-[#1a3c6e]"

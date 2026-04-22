@@ -85,7 +85,7 @@ export default function Signup() {
         >
           <Checkbox className="text-sm text-gray-500">
             I agree to the{" "}
-            <Link href="/terms" className="text-[#1a3c6e] font-medium hover:underline">Terms & Conditions</Link>
+            <Link href="/terms-condition" className="text-[#1a3c6e] font-medium hover:underline">Terms & Conditions</Link>
             {" "}and{" "}
             <Link href="/privacy" className="text-[#1a3c6e] font-medium hover:underline">Privacy Policy</Link>
           </Checkbox>
