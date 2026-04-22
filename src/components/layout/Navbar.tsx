@@ -12,18 +12,18 @@ import { usePathname } from "next/navigation";
 const mobileLinks = [
     // { label: "Buy", href: "/buy" },
     // { label: "Rent", href: "/rent" },
-    { label: "For Agents", href: "/for-agents" },
-    { label: "Pricing", href: "/pricing" },
+    // { label: "For Agents", href: "/for-agents" },
     // { label: "Blog", href: "/blog" },
+    { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
 ];
 
 const links = [
-    { label: "Buy", href: "/buy" },
-    { label: "Rent", href: "/rent" },
-    { label: "For Agents", href: "/for-agents" },
+    // { label: "Buy", href: "/buy" },
+    // { label: "Rent", href: "/rent" },
+    // { label: "For Agents", href: "/for-agents" },
+    // { label: "Blog", href: "/blog" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
     { label: "About", href: "/about" },
 ];
 
