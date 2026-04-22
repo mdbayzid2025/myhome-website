@@ -17,21 +17,21 @@ const authRoutes = [
  * 🔒 Private Routes
  */
 const privateRoutes = [
-  "/agency-profile",
-  "/agent-enquiries",
-  "/my-listing",
-  "/overview",
-  "/security",
-  "/subscription",
+  // "/agency-profile",
+  // "/agent-enquiries",
+  // "/my-listing",
+  // "/overview",
+  // "/security",
+  // "/subscription",
 
-  "/enquiries",
-  "/password-security",
-  "/profile",
-  "/save-properties",
-  "/saved-search",
-  "/settings",
+  // "/enquiries",
+  // "/password-security",
+  // "/profile",
+  // "/save-properties",
+  // "/saved-search",
+  // "/settings",
   "/terms-conditions",
-  "/user-notifications",
+  // "/user-notifications",
 ];
 
 export function proxy(request: NextRequest) {
