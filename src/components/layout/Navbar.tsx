@@ -10,11 +10,11 @@ import { usePathname } from "next/navigation";
 
 
 const mobileLinks = [
-    { label: "Buy", href: "/buy" },
-    { label: "Rent", href: "/rent" },
+    // { label: "Buy", href: "/buy" },
+    // { label: "Rent", href: "/rent" },
     { label: "For Agents", href: "/for-agents" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
+    // { label: "Blog", href: "/blog" },
     { label: "About", href: "/about" },
 ];
 
