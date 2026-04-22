@@ -17,21 +17,21 @@ const authRoutes = [
  * 🔒 Private Routes
  */
 const privateRoutes = [
-    "/agency-profile",
-    "/agent-enquiries",
-    "/my-listing",
-    "/overview",
-    "/security",
-    "/subscription",
+    // "/agency-profile",
+    // "/agent-enquiries",
+    // "/my-listing",
+    // "/overview",
+    // "/security",
+    // "/subscription",
 
-    "/enquiries",
+    // "/enquiries",
     "/password-security",
-    "/profile",
-    "/save-properties",
-    "/saved-search",
-    "/settings",
-    "/terms-conditions",
-    "/user-notifications",
+    // "/profile",
+    // "/save-properties",
+    // "/saved-search",
+    // "/settings",
+    // "/terms-conditions",
+    // "/user-notifications",
 ];
 
 export function middleware(request: NextRequest) {

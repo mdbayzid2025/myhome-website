@@ -74,13 +74,13 @@ export const PropertyContent = () => {
       {/* Property Information Table */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-4">Property Information</h3>
-        <div className="border border-gray-100 rounded-lg overflow-hidden">
-          <Table
+        <div className="border border-gray-100 bg-white rounded-lg overflow-hidden">
+          <Table          
             columns={columns}
             dataSource={data}
             pagination={false}
             showHeader={false}
-            rowClassName="hover:bg-transparent"
+            rowClassName="hover:bg-white"
           />
         </div>
       </div>
