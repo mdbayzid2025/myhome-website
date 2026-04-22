@@ -19,7 +19,7 @@ export const PropertyHeader = () => {
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Stunning Victorian Townhouse</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Stunning Victorian Townhouses</h1>
           <p className="text-gray-500 flex items-center gap-2">
             <MapPin size={16} />
             42 Kensington Park Road
