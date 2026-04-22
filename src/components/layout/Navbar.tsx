@@ -14,6 +14,7 @@ const mobileLinks = [
     // { label: "Rent", href: "/rent" },
     // { label: "For Agents", href: "/for-agents" },
     // { label: "Blog", href: "/blog" },
+    { label: "Home", href: "/home" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
 ];
@@ -23,6 +24,7 @@ const links = [
     // { label: "Rent", href: "/rent" },
     // { label: "For Agents", href: "/for-agents" },
     // { label: "Blog", href: "/blog" },
+    { label: "Home", href: "/home" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
 ];
