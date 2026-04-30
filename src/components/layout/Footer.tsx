@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="absolute inset-0 bg-black/50 z-0" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
                     <FooterBrand />
                     <div className="flex flex-col gap-4">
                         <h4 className="text-white font-bold text-lg">Company</h4>
@@ -41,7 +41,7 @@ export default function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="flex items-center gap-2 text-gray-300 hover:text-[#00c2a8] transition-colors text-[15px]"
+                                        className="flex items-center gap-2 text-gray-300 hover:text-[#14b8a6] transition-colors text-[15px]"
                                     >
                                         <PlayCircleOutlined className="text-sm" />
                                         {link.label}
@@ -58,7 +58,7 @@ export default function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="flex items-center gap-2 text-gray-300 hover:text-[#00c2a8] transition-colors text-[15px]"
+                                        className="flex items-center gap-2 text-gray-300 hover:text-[#14b8a6] transition-colors text-[15px]"
                                     >
                                         <PlayCircleOutlined className="text-sm" />
                                         {link.label}
@@ -75,7 +75,7 @@ export default function Footer() {
                                 <li key={link.href}>
                                     <Link
                                         href={link.href}
-                                        className="flex items-center gap-2 text-gray-300 hover:text-[#00c2a8] transition-colors text-[15px]"
+                                        className="flex items-center gap-2 text-gray-300 hover:text-[#14b8a6] transition-colors text-[15px]"
                                     >
                                         <PlayCircleOutlined className="text-sm" />
                                         {link.label}
@@ -84,12 +84,26 @@ export default function Footer() {
                             ))}
                         </ul>
                     </div>
+                    
+                    {/* Download App Section */}
+                    <div className="flex flex-col gap-4">
+                        <h4 className="text-white font-bold text-lg">Download App</h4>
+                        <div className="w-10 h-[2px] bg-white/40 rounded-full" />
+                        <div className="flex flex-col gap-3 mt-1">
+                            <Link href="#" className="block hover:opacity-80 transition-opacity">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" className="h-10 w-auto object-contain" />
+                            </Link>
+                            <Link href="#" className="block hover:opacity-80 transition-opacity">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" className="h-10 w-auto object-contain" />
+                            </Link>
+                        </div>
+                    </div>
 
                 </div>
                 <div className="border-t border-white/10 mt-12 pt-6 text-center">
                     <p className="text-gray-400 text-sm">
                         Copyrights 2025. All Rights are Reserved by{" "}
-                        <span className="text-[#00c2a8] font-semibold">Myhome</span>
+                        <span className="text-[#14b8a6] font-bold">Myhome</span>
                     </p>
                 </div>
             </div>

@@ -18,83 +18,98 @@ export const PropertySidebar = () => {
     <div className="space-y-6">
       
       {/* Contact Agent Card */}
-      <div className="bg-white border text-center border-gray-100 rounded-xl p-6 shadow-sm">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-12 w-12 bg-[#001B4D] rounded text-white flex items-center justify-center font-bold text-xl uppercase">
-            KN
-          </div>
-          <div className="text-left">
-            <h4 className="font-bold text-gray-900">Knight Frank</h4>
-            <p className="text-sm text-gray-500">Sarah Mitchell</p>
-            <p className="text-sm font-semibold text-[#1E3A8A] flex items-center gap-1 mt-1">
-              +44 20 7861 1111
-            </p>
-          </div>
+      <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+        {/* Top Property Snippet */}
+        <div className="bg-[#0f2d5e] p-4 flex gap-4 items-center">
+            <div className="relative w-16 h-12 rounded overflow-hidden flex-shrink-0">
+                <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400" alt="property" fill className="object-cover" unoptimized />
+            </div>
+            <div>
+                <p className="text-white font-bold text-lg leading-tight">£1,250,000</p>
+                <p className="text-[#14b8a6] text-xs font-medium">10,240 sqft | Notting Hill</p>
+            </div>
         </div>
 
-        <h4 className="font-bold text-gray-900 mb-4 text-left">Contact Agent</h4>
+        <div className="p-6">
+            <h4 className="font-bold text-gray-900 mb-4 text-left text-lg">Contact Agent</h4>
 
-        <Form
-          form={form}
-          layout="vertical"
-          onFinish={handleFinish}
-          requiredMark={false}
-          className="space-y-4"
-        >
-          <Form.Item name="name" className="mb-0" rules={[{ required: true, message: 'Please enter your name' }]}>
-            <Input placeholder="Your Name" size="large" className="bg-gray-50/50" />
-          </Form.Item>
+            <Form
+            form={form}
+            layout="vertical"
+            onFinish={handleFinish}
+            requiredMark={false}
+            className="space-y-4 mb-6"
+            >
+            <Form.Item name="name" className="mb-0" rules={[{ required: true, message: 'Please enter your name' }]}>
+                <Input placeholder="Your Name" size="large" className="bg-gray-50/50 border border-gray-200 rounded-xl hover:border-[#14b8a6] focus:border-[#14b8a6]" />
+            </Form.Item>
 
-          <Form.Item name="email" className="mb-0" rules={[{ required: true, type: 'email', message: 'Please enter a valid email' }]}>
-            <Input placeholder="Email Address" size="large" className="bg-gray-50/50" />
-          </Form.Item>
+            <Form.Item name="email" className="mb-0" rules={[{ required: true, type: 'email', message: 'Please enter a valid email' }]}>
+                <Input placeholder="Email Address" size="large" className="bg-gray-50/50 border border-gray-200 rounded-xl hover:border-[#14b8a6] focus:border-[#14b8a6]" />
+            </Form.Item>
 
-          <Form.Item name="phone" className="mb-0" rules={[{ required: true, message: 'Please enter your phone number' }]}>
-            <Input placeholder="Phone Number" size="large" className="bg-gray-50/50" />
-          </Form.Item>
+            <Form.Item name="phone" className="mb-0" rules={[{ required: true, message: 'Please enter your phone number' }]}>
+                <Input placeholder="Phone Number" size="large" className="bg-gray-50/50 border border-gray-200 rounded-xl hover:border-[#14b8a6] focus:border-[#14b8a6]" />
+            </Form.Item>
 
-          <Form.Item name="message" className="mb-0" rules={[{ required: true }]}>
-            <TextArea 
-              placeholder="I would like to arrange a viewing for..." 
-              rows={4} 
-              className="bg-gray-50/50 resize-none"
-            />
-          </Form.Item>
+            <Form.Item name="message" className="mb-0" rules={[{ required: true }]}>
+                <TextArea 
+                placeholder="I would like to arrange a viewing for..." 
+                rows={4} 
+                className="bg-gray-50/50 border border-gray-200 resize-none rounded-xl hover:border-[#14b8a6] focus:border-[#14b8a6]"
+                />
+            </Form.Item>
 
-          <Button 
-            type="primary" 
-            htmlType="submit" 
-            size="large" 
-            className="w-full bg-[#001B4D] hover:bg-[#001B4D]/90 h-12 font-medium"
-          >
-            Send Message
-          </Button>
-        </Form>
+            <Button 
+                type="primary" 
+                htmlType="submit" 
+                size="large" 
+                className="w-full bg-[#14b8a6] hover:!bg-[#119e8e] border-none h-12 font-bold text-base rounded-xl shadow-lg shadow-[#14b8a6]/20"
+            >
+                Send Message
+            </Button>
+            </Form>
+
+            {/* Agent Info at bottom */}
+            <div className="pt-5 border-t border-gray-100 flex items-center gap-4">
+                <div className="relative h-12 w-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Image src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Sarah Mitchell" fill className="rounded-full object-cover" unoptimized={true} />
+                </div>
+                <div>
+                    <h4 className="font-bold text-gray-900 leading-tight">Sarah Mitchell</h4>
+                    <p className="text-xs text-gray-500 mb-1">Knight Frank</p>
+                    <p className="text-sm font-semibold text-[#14b8a6] flex items-center gap-1">
+                        +44 20 7861 1111
+                    </p>
+                </div>
+            </div>
+        </div>
       </div>
 
       {/* Location card / map placeholder */}
       <div>
         <h4 className="font-bold text-gray-900 mb-4">Location</h4>
-        <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm relative h-[250px] cursor-pointer group">
+        <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm relative h-[200px] cursor-pointer group">
           <Image 
             src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" 
             alt="Map location placeholder" 
             fill 
-            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity" 
-            unoptimized
+            className="object-cover opacity-80 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105" 
+            unoptimized={true}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white px-4 py-2 rounded-full shadow-lg text-sm font-semibold text-gray-900 flex items-center gap-2">
-                <MapPinIcon size={16} className="text-[#1E3A8A]" /> View on Map
+            <div className="bg-white px-5 py-2.5 rounded-full shadow-lg text-sm font-bold text-gray-900 flex items-center gap-2 hover:scale-105 transition-transform">
+                <MapPinIcon size={18} className="text-[#14b8a6]" /> View on Map
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };
 
-// Internal MapPin component to keep imports clean above
+// Internal MapPin component
 const MapPinIcon = ({ size, className }: { size: number, className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>

@@ -32,8 +32,12 @@ export const PropertyHeader = () => {
             <p className="text-sm text-gray-500">Guide Price</p>
           </div>
           <div className="flex gap-3 mt-2 md:mt-0">
-            <Button icon={<Heart size={16} />} size="large" className="flex items-center gap-2 rounded-md">Save</Button>
-            <Button icon={<Share size={16} />} size="large" className="flex items-center gap-2 rounded-md">Share</Button>
+            <Button className="flex items-center justify-center gap-2 rounded-xl h-12 px-6 min-w-[120px] font-semibold text-gray-700 border-gray-200 hover:!border-[#14b8a6] hover:!text-[#14b8a6] text-base">
+                <Heart size={18} /> Save
+            </Button>
+            <Button className="flex items-center justify-center gap-2 rounded-xl h-12 px-6 min-w-[120px] font-semibold text-gray-700 border-gray-200 hover:!border-[#14b8a6] hover:!text-[#14b8a6] text-base">
+                <Share size={18} /> Share
+            </Button>
           </div>
         </div>
       </div>
