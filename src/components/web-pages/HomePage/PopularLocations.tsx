@@ -32,8 +32,7 @@ const mockLocations: Location[] = [
 function LocationCard({ location }: { location: Location }) {
     return (
         <Link
-            href={`/buy?location=`}
-            // href={`/buy?location=${encodeURIComponent(location.city)}`}
+            href={`/find-properties?location=${encodeURIComponent(location.city)}`}
             className="flex flex-col items-center gap-2 group"
         >
             <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">

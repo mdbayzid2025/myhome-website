@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Input, Button } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, SettingOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import FilterModal from "../FindProperties/FilterModal";
+import { SlidersHorizontal } from "lucide-react";
 
 type SearchTab = "buy" | "rent";
 
@@ -14,7 +16,8 @@ const tabConfig: Record<SearchTab, { label: string; placeholder: string; path: s
 };
 
 export default function HeroSection() {
-    const [activeTab, setActiveTab] = useState<any>("find-properties");
+    const [activeTab, setActiveTab] = useState<SearchTab>("buy");
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [query, setQuery] = useState("");
     const router = useRouter();
 
@@ -39,32 +42,32 @@ export default function HeroSection() {
             />
 
             {/* Subtle dark veil — keeps image vibrant but text legible */}
-            <div className="absolute inset-0 bg-black/30 rounded-3xl" />
+            <div className="absolute inset-0 bg-black/40 rounded-3xl" />
 
             {/* Content */}
-            <div className="relative z-10 w-full max-w-3xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-8">
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-10">
 
                 {/* Headline */}
-                <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold text-center leading-tight drop-shadow-md">
+                <h1 className="text-white text-4xl sm:text-5xl md:text-7xl font-black text-center leading-tight drop-shadow-md">
                     Property Simplified
                 </h1>
 
                 {/* Search card */}
-                <div className="w-full bg-[#0f2d5e]/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
+                <div className="w-full bg-[#0f2d5e]/80 backdrop-blur-md rounded-2xl overflow-hidden shadow-2xl border border-white/10">
 
                     {/* Tabs */}
-                    <div className="flex">
+                    <div className="flex border-b border-white/10">
                         {(Object.keys(tabConfig) as SearchTab[]).map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 className={`
-                  flex-1 py-4 text-base font-bold tracking-wide transition-all duration-200
-                  ${activeTab === tab
-                                        ? "text-white border-b-2 border-white"
-                                        : "text-white/50 border-b-2 border-white/10 hover:text-white/80"
+                   flex-1 py-4 text-sm font-semibold tracking-wide transition-all duration-300
+                   ${activeTab === tab
+                                        ? "text-white bg-white/5 border-b-2 border-[#14b8a6]"
+                                        : "text-white/50 hover:text-white/80 hover:bg-white/5"
                                     }
-                `}
+                 `}
                             >
                                 {tabConfig[tab].label}
                             </button>
@@ -72,10 +75,10 @@ export default function HeroSection() {
                     </div>
 
                     {/* Search row */}
-                    <div className="px-5 pb-6 pt-4 flex flex-col sm:flex-row gap-3">
-                        {/* Label */}
-                        <div className="w-full flex flex-col gap-2">
-                            <span className="text-white/70 text-sm pl-1">
+                    <div className="px-6 py-8 flex flex-col sm:flex-row gap-4 items-end">
+                        {/* Search Container */}
+                        <div className="w-full flex flex-col gap-3">
+                            <span className="text-white/80 text-xs font-semibold pl-1">
                                 {tabConfig[activeTab as keyof typeof tabConfig]?.placeholder}
                             </span>
 
@@ -86,13 +89,22 @@ export default function HeroSection() {
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                     onKeyDown={handleKeyDown}
-                                    placeholder="Search by location or postcode or place"
-                                    prefix={<SearchOutlined className="text-gray-400 text-base" />}
+                                    placeholder="Search by location, postcode or area..."
+                                    prefix={<SearchOutlined className="text-gray-400 mr-3 text-lg" />}
+                                    suffix={
+                                        <button 
+                                            onClick={() => setIsFilterOpen(true)}
+                                            className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-400 hover:text-[#1a3c6e]"
+                                            title="Open Filters"
+                                        >
+                                            <SlidersHorizontal size={18} />
+                                        </button>
+                                    }
                                     className="
-                    flex-1 !rounded-xl !border-0 !bg-white
-                    !text-gray-700 !placeholder-gray-400
-                    !h-12 !text-sm
-                  "
+                                        flex-1 !rounded-xl !border-0 !bg-white
+                                        !text-gray-900 !placeholder-gray-400/80
+                                        !h-[56px] !text-[15px] !font-medium shadow-xl !pl-6 !pr-2
+                                    "
                                     allowClear
                                 />
 
@@ -101,11 +113,11 @@ export default function HeroSection() {
                                     size="large"
                                     onClick={handleSearch}
                                     className="
-                                    !h-12 !px-7 !rounded-xl !border-0
-                                    !bg-[#00d4a1] hover:!bg-[#00c090]
-                                    !text-gray-900 !font-bold !text-sm
-                                    whitespace-nowrap shrink-0 transition-colors
-                                "
+                                        !h-[56px] !px-12 !rounded-xl !border-0
+                                        !bg-[#14b8a6] hover:!bg-[#119e8e]
+                                        !text-white !font-semibold !text-[15px]
+                                        whitespace-nowrap shrink-0 transition-all active:scale-95 shadow-lg shadow-[#14b8a6]/20
+                                    "
                                 >
                                     Search Properties
                                 </Button>
@@ -114,6 +126,11 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
+
+            <FilterModal 
+                isOpen={isFilterOpen} 
+                onClose={() => setIsFilterOpen(false)} 
+            />
         </section>
     );
 }

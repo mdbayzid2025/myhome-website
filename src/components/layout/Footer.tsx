@@ -31,8 +31,13 @@ export default function Footer() {
             <div className="absolute inset-0 bg-black/50 z-0" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                    <FooterBrand />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                    {/* Brand Section - Balanced space */}
+                    <div className="lg:col-span-2">
+                        <FooterBrand />
+                    </div>
+
+                    {/* Company Links */}
                     <div className="flex flex-col gap-4">
                         <h4 className="text-white font-bold text-lg">Company</h4>
                         <div className="w-10 h-[2px] bg-white/40 rounded-full" />
@@ -50,23 +55,8 @@ export default function Footer() {
                             ))}
                         </ul>
                     </div>
-                    <div className="flex flex-col gap-4">
-                        <h4 className="text-white font-bold text-lg">For Agents</h4>
-                        <div className="w-10 h-[2px] bg-white/40 rounded-full" />
-                        <ul className="flex flex-col gap-3">
-                            {agentLinks?.map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="flex items-center gap-2 text-gray-300 hover:text-[#14b8a6] transition-colors text-[15px]"
-                                    >
-                                        <PlayCircleOutlined className="text-sm" />
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+
+                    {/* Quick Links */}
                     <div className="flex flex-col gap-4">
                         <h4 className="text-white font-bold text-lg">Quick Link</h4>
                         <div className="w-10 h-[2px] bg-white/40 rounded-full" />
@@ -89,7 +79,7 @@ export default function Footer() {
                     <div className="flex flex-col gap-4">
                         <h4 className="text-white font-bold text-lg">Download App</h4>
                         <div className="w-10 h-[2px] bg-white/40 rounded-full" />
-                        <div className="flex flex-col gap-3 mt-1">
+                        <div className="flex flex-col gap-4 mt-1">
                             <Link href="#" className="block hover:opacity-80 transition-opacity">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" className="h-10 w-auto object-contain" />
                             </Link>

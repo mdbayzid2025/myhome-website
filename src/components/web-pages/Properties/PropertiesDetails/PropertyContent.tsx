@@ -1,8 +1,11 @@
+"use client";
+
 import React from 'react';
 import { Bed, Bath, Square, Home, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
 export const PropertyContent = () => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   const data = [
     { key: '1', feature: 'Tenure', value: 'Freehold' },
@@ -24,6 +27,8 @@ export const PropertyContent = () => {
     'Wine Cellar',
     'Recently Renovated'
   ];
+
+  const fullDescription = "An exquisite Victorian townhouse in the heart of Notting Hill. This beautifully restored property features original period details combined with modern luxury. The open-plan kitchen-diner leads to a stunning landscaped garden, perfect for entertaining. The upper floors provide generous bedroom accommodation and contemporary bathrooms. The lower ground floor features a state-of-the-art media room and a private wine cellar. Every detail has been meticulously considered, from the reclaimed oak flooring to the bespoke marble finishes in the master suite. This is a rare opportunity to acquire a truly unique home in one of London's most sought-after locations.";
 
   return (
     <div className="space-y-10">
@@ -47,29 +52,18 @@ export const PropertyContent = () => {
         </div>
       </div>
 
-      {/* Floor Plan */}
-      <div>
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Floor Plan</h3>
-        <div className="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-4 shadow-sm cursor-pointer hover:border-[#14b8a6] transition-colors group">
-            <div className="relative w-24 h-24 bg-gray-50 rounded-lg overflow-hidden flex-shrink-0 p-2">
-                <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=400" alt="Floorplan" fill className="object-contain opacity-80 group-hover:opacity-100 transition-opacity" unoptimized />
-            </div>
-            <div>
-                <p className="font-bold text-gray-900 mb-1">Ground Floor & First Floor</p>
-                <p className="text-sm text-[#14b8a6] font-semibold flex items-center gap-1 group-hover:underline">
-                    View full floor plan
-                </p>
-            </div>
-        </div>
-      </div>
-
       {/* Description */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-3">Property Description</h3>
-        <p className="text-gray-600 leading-relaxed text-sm">
-          An exquisite Victorian townhouse in the heart of Notting Hill. This beautifully restored property features original period details combined with modern luxury. The open-plan kitchen-diner leads to a stunning landscaped garden, perfect for entertaining. The upper floors provide generous bedroom accommodation and contemporary bathrooms.
+        <p className={`text-gray-600 leading-relaxed text-sm transition-all duration-300 ${!isExpanded ? 'line-clamp-3' : ''}`}>
+          {fullDescription}
         </p>
-        <button className="text-[#14b8a6] font-semibold text-sm mt-2 hover:underline">Read more description</button>
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-[#14b8a6] font-semibold text-sm mt-3 hover:underline flex items-center gap-1"
+        >
+          {isExpanded ? 'Show less' : 'Read more description'}
+        </button>
       </div>
 
       {/* Key Features */}

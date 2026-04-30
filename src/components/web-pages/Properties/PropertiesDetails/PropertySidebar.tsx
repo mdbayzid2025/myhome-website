@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Form, Input, Button } from 'antd';
-import { Phone } from 'lucide-react';
+import { Phone, FileText, Download } from 'lucide-react';
 import Image from 'next/image';
 
 const { TextArea } = Input;
@@ -91,11 +91,10 @@ export const PropertySidebar = () => {
         <h4 className="font-bold text-gray-900 mb-4">Location</h4>
         <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm relative h-[200px] cursor-pointer group">
           <Image 
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" 
-            alt="Map location placeholder" 
+            src="/london_property_map_preview_1777542952963.png" 
+            alt="Property Location Map" 
             fill 
-            className="object-cover opacity-80 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105" 
-            unoptimized={true}
+            className="object-cover opacity-90 group-hover:opacity-100 transition-transform duration-500 group-hover:scale-105" 
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-white px-5 py-2.5 rounded-full shadow-lg text-sm font-bold text-gray-900 flex items-center gap-2 hover:scale-105 transition-transform">
@@ -103,6 +102,26 @@ export const PropertySidebar = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Brochure Section */}
+      <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+        <div className="flex items-start gap-4 mb-5">
+            <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center text-red-500 shrink-0">
+                <FileText size={24} />
+            </div>
+            <div>
+                <h4 className="font-bold text-gray-900 leading-tight">Property Brochure</h4>
+                <p className="text-xs text-gray-500 mt-1">Get the full property details, floorplans, and specs in a PDF format.</p>
+            </div>
+        </div>
+        <Button 
+            icon={<Download size={16} />}
+            className="w-full h-11 border-2 border-gray-100 hover:border-[#1a3c6e] hover:text-[#1a3c6e] rounded-xl flex items-center justify-center gap-2 font-bold transition-all"
+            onClick={() => window.open('/sample-brochure.pdf', '_blank')}
+        >
+            Download Brochure
+        </Button>
       </div>
 
     </div>

@@ -18,22 +18,18 @@ export default function NavActions() {
 
     const userMenuItems: MenuProps["items"] = [
         { key: "profile", label: <Link href="/profile">My Profile</Link> },
+        { key: "saved-searches", label: <Link href="/saved-search">Saved Searches</Link> },
+        { key: "saved-properties", label: <Link href="/save-properties">Saved Properties</Link> },
+        { type: "divider" },
         {
             key: "dashboard", label: (
-                <Link rel="noopener noreferrer" href="/save-properties">
-                    Dashboard
-                </Link>
-            ),
-        },
-        {
-            key: "overview", label: (
-                <Link rel="noopener noreferrer" href="/analytics">
+                <Link href="/analytics">
                     Agent Dashboard
                 </Link>
             ),
         },
         { type: "divider" },
-        { key: "logout", label: <span onClick={handleLogout}>Sign Out</span>, danger: true },
+        { key: "logout", label: <span onClick={handleLogout} className="cursor-pointer">Sign Out</span>, danger: true },
     ];
 
     if (isLoggedIn) {

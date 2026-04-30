@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Drawer, Button } from "antd";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { Drawer, Button, Dropdown } from "antd";
+import { MenuOutlined, CloseOutlined, DownOutlined } from "@ant-design/icons";
 import NavActions from "./NavActions";
 import { usePathname } from "next/navigation";
 
@@ -69,6 +69,23 @@ export default function Navbar() {
                             </Link>
                         );
                     })}
+                    
+                    {/* More Dropdown */}
+                    <Dropdown
+                        menu={{
+                            items: [
+                                { key: '1', label: <Link href="/terms-condition">Terms & Conditions</Link> },
+                                { key: '2', label: <Link href="/privacy">Privacy Policy</Link> },
+                                { key: '3', label: <Link href="/faq">FAQ</Link> },
+                            ]
+                        }}
+                        placement="bottom"
+                        trigger={['hover']}
+                    >
+                        <div className="px-3 py-1.5 rounded-md font-medium text-[15px] text-gray-700 hover:text-[#1a3c6e] cursor-pointer flex items-center gap-1 transition-all duration-200">
+                            More <DownOutlined className="text-[10px]" />
+                        </div>
+                    </Dropdown>
                 </nav>
 
                 {/* Desktop Actions */}
@@ -80,7 +97,7 @@ export default function Navbar() {
                         className="md:hidden!"
                         onClick={() => setDrawerOpen(true)}
                     />
-                    
+
                 </div>
 
             </div>
@@ -117,6 +134,13 @@ export default function Navbar() {
                             </Link>
                         );
                     })}
+                    
+                    {/* Mobile More Links */}
+                    <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-gray-100">
+                        <Link href="/terms-condition" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">Terms & Conditions</Link>
+                        <Link href="/privacy" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">Privacy Policy</Link>
+                        <Link href="/faq" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">FAQ</Link>
+                    </div>
                     <div className="mt-4 flex flex-col gap-3">
                         <Button block size="large" className="!border-[#1a3c6e] !text-[#1a3c6e]" href="/auth/sign-in">
                             Sign In

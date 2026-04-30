@@ -1,18 +1,18 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Modal, Slider, Button } from 'antd';
+import { Drawer, Slider, Select, Checkbox } from 'antd';
 import { 
-  Wifi, 
-  Car, 
-  Wind, 
-  Waves, 
-  Tv, 
-  Flame, 
   X,
   Home,
   Building2,
-  Warehouse
+  Warehouse,
+  MapPin,
+  Palmtree,
+  Car,
+  BedDouble,
+  PoundSterling,
+  Search
 } from 'lucide-react';
 
 interface FilterModalProps {
@@ -21,160 +21,234 @@ interface FilterModalProps {
 }
 
 const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
-  const [priceRange, setPriceRange] = useState<[number, number]>([100000, 2000000]);
-  const [beds, setBeds] = useState<string>("3");
-  const [baths, setBaths] = useState<string>("2");
-  const [activeType, setActiveType] = useState<string>("House");
+  const [addedDate, setAddedDate] = useState<string>("Any");
+  const [radius, setRadius] = useState<number>(5);
+  const [activeType, setActiveType] = useState<string>("Detached");
+  const [beds, setBeds] = useState<string>("2");
+  const [baths, setBaths] = useState<string>("1");
 
-  const amenities = [
-    { icon: <Wifi size={20} />, label: "WiFi" },
-    { icon: <Car size={20} />, label: "Parking" },
-    { icon: <Wind size={20} />, label: "AC" },
-    { icon: <Waves size={20} />, label: "Pool" },
-    { icon: <Tv size={20} />, label: "TV" },
-    { icon: <Flame size={20} />, label: "Heating" },
+  const propertyTypes = [
+    { id: 'Detached', icon: <Home size={22} />, desc: 'Stand-alone' },
+    { id: 'Semi', icon: <Building2 size={22} />, desc: 'Semi-detached' },
+    { id: 'Terraced', icon: <Warehouse size={22} />, desc: 'Row housing' },
+    { id: 'Bungalow', icon: <Palmtree size={22} />, desc: 'Single story' },
+    { id: 'Flat', icon: <Building2 size={22} />, desc: 'Apartment' },
+    { id: 'Park Home', icon: <Warehouse size={22} />, desc: 'Mobile/Modular' }
+  ];
+
+  const dateOptions = [
+    { label: 'Any', value: 'Any' },
+    { label: 'Last 24h', value: '24h' },
+    { label: '3 days', value: '3d' },
+    { label: '7 days', value: '7d' },
+    { label: '14 days', value: '14d' }
   ];
 
   return (
-    <Modal
+    <Drawer
       open={isOpen}
-      onCancel={onClose}
-      footer={null}
-      closeIcon={<X className="text-gray-400 hover:text-gray-600" />}
-      width={600}
-      centered
-      className="filter-modal"
-      title={<h3 className="text-xl font-bold text-gray-900 px-2 pt-2">Advanced Filters</h3>}
+      onClose={onClose}
+      placement="right"
+      width={500}
+      closable={false}
+      styles={{
+        body: { padding: 0 },
+        mask: { backdropFilter: 'blur(4px)', backgroundColor: 'rgba(26, 60, 110, 0.2)' }
+      }}
+      className="premium-filter-drawer"
     >
-      <div className="py-4 space-y-8 max-h-[70vh] overflow-y-auto px-4">
+      {/* Drawer Content */}
+      <div className="flex flex-col h-full bg-white">
         
-        {/* Property Type */}
-        <section>
-          <h4 className="text-[11px] font-extrabold text-gray-400 uppercase tracking-[0.1em] mb-4">Property Type</h4>
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { id: 'House', icon: <Home /> },
-              { id: 'Apartment', icon: <Building2 /> },
-              { id: 'Studio', icon: <Warehouse /> }
-            ].map((type) => (
-              <button 
-                key={type.id}
-                onClick={() => setActiveType(type.id)}
-                className={`flex flex-col items-center justify-center p-4 border rounded-2xl transition-all gap-2 group ${
-                  activeType === type.id 
-                    ? 'border-[#0f2d5e] bg-[#0f2d5e]/5' 
-                    : 'border-gray-100 hover:border-gray-300'
-                }`}
-              >
-                <div className={`${activeType === type.id ? 'text-[#0f2d5e]' : 'text-gray-400'}`}>
-                  {type.icon}
-                </div>
-                <span className={`text-xs font-bold ${activeType === type.id ? 'text-[#0f2d5e]' : 'text-gray-600'}`}>{type.id}</span>
-              </button>
-            ))}
+        {/* Sticky Header */}
+        <div className="bg-[#1a3c6e] p-6 text-white sticky top-0 z-10">
+          <div className="flex justify-between items-center mb-1">
+            <h3 className="text-xl font-semibold tracking-tight">Search Filters</h3>
+            <button 
+                onClick={onClose}
+                className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-all"
+            >
+                <X size={18} className="text-white" />
+            </button>
           </div>
-        </section>
-
-        {/* Price Range */}
-        <section>
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-[11px] font-extrabold text-gray-400 uppercase tracking-[0.1em]">Price Range</h4>
-            <span className="text-[#0f2d5e] font-bold text-sm bg-[#0f2d5e]/10 px-3 py-1 rounded-full">
-              £{(priceRange[0]/1000).toFixed(0)}k - £{(priceRange[1]/1000).toFixed(0)}k
-            </span>
-          </div>
-          <Slider
-            range
-            min={50000}
-            max={5000000}
-            step={10000}
-            value={priceRange}
-            onChange={(val) => setPriceRange(val as [number, number])}
-            styles={{
-              track: { background: '#0f2d5e' },
-              handle: { borderColor: '#0f2d5e', background: '#0f2d5e' }
-            }}
-          />
-        </section>
-
-        {/* Bedrooms & Bathrooms */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <section>
-            <h4 className="text-[11px] font-extrabold text-gray-400 uppercase tracking-[0.1em] mb-4">Bedrooms</h4>
-            <div className="flex gap-2">
-              {['1', '2', '3', '4', '5+'].map((num) => (
-                <button 
-                  key={num}
-                  onClick={() => setBeds(num)}
-                  className={`w-10 h-10 rounded-xl font-bold text-sm transition-all ${
-                    beds === num 
-                      ? 'bg-[#0f2d5e] text-white shadow-lg shadow-[#0f2d5e]/20' 
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                  }`}
-                >
-                  {num}
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h4 className="text-[11px] font-extrabold text-gray-400 uppercase tracking-[0.1em] mb-4">Bathrooms</h4>
-            <div className="flex gap-2">
-              {['1', '2', '3', '4+'].map((num) => (
-                <button 
-                  key={num}
-                  onClick={() => setBaths(num)}
-                  className={`w-10 h-10 rounded-xl font-bold text-sm transition-all ${
-                    baths === num 
-                      ? 'bg-[#0f2d5e] text-white shadow-lg shadow-[#0f2d5e]/20' 
-                      : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                  }`}
-                >
-                  {num}
-                </button>
-              ))}
-            </div>
-          </section>
+          <p className="text-white/60 text-[13px]">Fine-tune your property matches</p>
         </div>
 
-        {/* Amenities */}
-        <section>
-          <h4 className="text-[11px] font-extrabold text-gray-400 uppercase tracking-[0.1em] mb-4">Amenities</h4>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-            {amenities.map((item) => (
-              <button 
-                key={item.label}
-                className="flex flex-col items-center justify-center p-3 border border-gray-50 rounded-2xl hover:border-[#0f2d5e] hover:bg-[#0f2d5e]/5 transition-all gap-1 group"
-              >
-                <div className="text-gray-400 group-hover:text-[#0f2d5e]">{item.icon}</div>
-                <span className="text-[10px] font-bold text-gray-500 uppercase">{item.label}</span>
-              </button>
-            ))}
-          </div>
-        </section>
-      </div>
+        {/* Scrollable Body */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+          
+          {/* Section: Type */}
+          <section>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-6 rounded-lg bg-[#1a3c6e]/5 flex items-center justify-center text-[#1a3c6e]">
+                  <Home size={14} />
+              </div>
+              <h4 className="text-sm font-semibold text-gray-900">Property Style</h4>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {propertyTypes.map((type) => (
+                <button 
+                  key={type.id}
+                  onClick={() => setActiveType(type.id)}
+                  className={`flex flex-col items-start p-4 border-2 rounded-xl transition-all gap-1.5 text-left relative group ${
+                    activeType === type.id 
+                      ? 'border-[#1a3c6e] bg-[#1a3c6e] text-white shadow-lg shadow-[#1a3c6e]/10' 
+                      : 'border-gray-50 bg-gray-50/50 hover:border-gray-200'
+                  }`}
+                >
+                  <div className={`${activeType === type.id ? 'text-white' : 'text-[#1a3c6e]'}`}>
+                      {type.icon}
+                  </div>
+                  <div>
+                      <div className={`text-sm font-semibold ${activeType === type.id ? 'text-white' : 'text-gray-900'}`}>{type.id}</div>
+                      <div className={`text-[11px] ${activeType === type.id ? 'text-white/70' : 'text-gray-500'}`}>{type.desc}</div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
 
-      {/* Footer */}
-      <div className="flex gap-4 mt-8 pt-6 pb-2 border-t border-gray-100 px-4">
-        <button 
-          className="flex-1 h-12 rounded-xl font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 transition-colors"
-          onClick={() => {
-            setPriceRange([100000, 2000000]);
-            setBeds("3");
-            setBaths("2");
-          }}
-        >
-          Reset All
-        </button>
-        <button 
-          className="flex-[2] h-12 rounded-xl font-bold bg-[#0f2d5e] text-white hover:bg-[#0a1f42] transition-colors shadow-lg shadow-[#0f2d5e]/30"
-          onClick={onClose}
-        >
-          Show Results
-        </button>
+          {/* Section: Financials */}
+          <section>
+              <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-lg bg-[#1a3c6e]/5 flex items-center justify-center text-[#1a3c6e]">
+                      <PoundSterling size={14} />
+                  </div>
+                  <h4 className="text-sm font-semibold text-gray-900">Budget</h4>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                      <label className="text-xs font-medium text-gray-500 ml-1">Min Price</label>
+                      <Select className="w-full h-11" defaultValue="0" options={[{ value: '0', label: 'No Min' }, { value: '250000', label: '£250k' }]} />
+                  </div>
+                  <div className="space-y-1.5">
+                      <label className="text-xs font-medium text-gray-500 ml-1">Max Price</label>
+                      <Select className="w-full h-11" defaultValue="any" options={[{ value: 'any', label: 'No Max' }, { value: '500000', label: '£500k' }]} />
+                  </div>
+              </div>
+          </section>
+
+          {/* Section: Radius */}
+          <section>
+              <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-lg bg-[#1a3c6e]/5 flex items-center justify-center text-[#1a3c6e]">
+                      <MapPin size={14} />
+                  </div>
+                  <h4 className="text-sm font-semibold text-gray-900">Search Radius</h4>
+              </div>
+              <div className="px-2 pt-2">
+                  <Slider 
+                      min={0} 
+                      max={20} 
+                      value={radius} 
+                      onChange={setRadius}
+                      marks={{
+                          0: { style: { fontSize: '10px', fontWeight: 600 }, label: 'Exact' },
+                          5: { style: { fontSize: '10px', fontWeight: 600 }, label: '5mi' },
+                          10: { style: { fontSize: '10px', fontWeight: 600 }, label: '10mi' },
+                          15: { style: { fontSize: '10px', fontWeight: 600 }, label: '15mi' },
+                          20: { style: { fontSize: '10px', fontWeight: 600 }, label: '20mi' }
+                      }}
+                      tooltip={{ 
+                          formatter: (val) => val === 0 ? 'Exact match' : `Within ${val} miles`,
+                          open: true 
+                      }}
+                      className="premium-slider"
+                  />
+              </div>
+          </section>
+
+          {/* Section: Rooms */}
+          <section>
+              <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-lg bg-[#1a3c6e]/5 flex items-center justify-center text-[#1a3c6e]">
+                      <BedDouble size={14} />
+                  </div>
+                  <h4 className="text-sm font-semibold text-gray-900">Rooms</h4>
+              </div>
+              <div className="space-y-4">
+                  <div className="flex flex-col gap-2">
+                      <label className="text-xs font-semibold text-gray-600 ml-1">Bedrooms</label>
+                      <div className="flex gap-1 p-1 bg-gray-50 rounded-lg border border-gray-100">
+                          {['Any', '1', '2', '3', '4+'].map((num) => (
+                              <button key={num} onClick={() => setBeds(num)} className={`flex-1 h-9 rounded-md font-semibold text-[11px] transition-all ${beds === num ? 'bg-white text-[#1a3c6e] shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}>{num}</button>
+                          ))}
+                      </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                      <label className="text-xs font-semibold text-gray-600 ml-1">Bathrooms</label>
+                      <div className="flex gap-1 p-1 bg-gray-50 rounded-lg border border-gray-100">
+                          {['Any', '1', '2', '3', '4+'].map((num) => (
+                              <button key={num} onClick={() => setBaths(num)} className={`flex-1 h-9 rounded-md font-semibold text-[11px] transition-all ${baths === num ? 'bg-white text-[#1a3c6e] shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}>{num}</button>
+                          ))}
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+          {/* Section: Advanced */}
+          <section>
+              <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-6 rounded-lg bg-[#1a3c6e]/5 flex items-center justify-center text-[#1a3c6e]">
+                      <Warehouse size={14} />
+                  </div>
+                  <h4 className="text-sm font-semibold text-gray-900">Advanced Filters</h4>
+              </div>
+              <div className="space-y-5">
+                  <div className="flex flex-col gap-2">
+                      <label className="text-xs font-semibold text-gray-600 ml-1">Listed since</label>
+                      <div className="flex flex-wrap gap-1.5 p-1 bg-gray-50 rounded-lg border border-gray-100">
+                          {dateOptions.map((opt) => (
+                              <button 
+                                key={opt.value} 
+                                onClick={() => setAddedDate(opt.value)} 
+                                className={`flex-1 min-w-[70px] h-9 rounded-md font-semibold text-[11px] transition-all ${addedDate === opt.value ? 'bg-white text-[#1a3c6e] shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                              >
+                                {opt.label}
+                              </button>
+                          ))}
+                      </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-2">
+                      <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                          <Checkbox className="premium-checkbox" />
+                          <span className="text-xs font-medium text-gray-600">Garden</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                          <Checkbox className="premium-checkbox" />
+                          <span className="text-xs font-medium text-gray-600">Parking</span>
+                      </div>
+                      <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                          <Checkbox className="premium-checkbox" />
+                          <span className="text-xs font-medium text-gray-600">Freehold</span>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+        </div>
+
+        {/* Footer */}
+        <div className="p-5 border-t border-gray-100 bg-white">
+            <div className="flex gap-3">
+                <button 
+                    onClick={() => { setRadius(5); setBeds("2"); }}
+                    className="flex-1 h-11 rounded-lg font-semibold text-gray-500 hover:bg-gray-50 transition-all text-xs"
+                >
+                    Reset
+                </button>
+                <button 
+                    onClick={onClose}
+                    className="flex-[2] h-11 rounded-lg font-semibold bg-[#14b8a6] text-white hover:opacity-90 transition-all text-sm flex items-center justify-center gap-2 shadow-md shadow-[#14b8a6]/10"
+                >
+                    <Search size={16} />
+                    <span>Search Properties</span>
+                </button>
+            </div>
+        </div>
+
       </div>
-    </Modal>
+    </Drawer>
   );
 };
 
