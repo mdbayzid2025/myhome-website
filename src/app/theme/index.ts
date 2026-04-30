@@ -1,6 +1,10 @@
 
 export const mainTheme = {
-    token: { controlHeight: 42, colorPrimary: "var(--color-primary)", fontFamily: "var(--font-inter), 'Inter', sans-serif" },
+    token: { 
+        controlHeight: 42, 
+        colorPrimary: "var(--color-primary)",
+        fontFamily: "var(--font-inter), 'Inter', sans-serif"
+    },
     components: {
         Input: {
             borderRadius: 12,
