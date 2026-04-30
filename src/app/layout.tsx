@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased inter`}>
         <ReduxProvider>
-          <ConfigProvider theme={mainTheme}>          
+          <ConfigProvider theme={mainTheme} wave={{ disabled: true }}>          
               <Navbar />
               <Toaster position="top-right" duration={1500} />
               {children}

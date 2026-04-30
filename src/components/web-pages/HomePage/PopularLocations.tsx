@@ -24,9 +24,6 @@ const mockLocations: Location[] = [
     { id: "4", city: "Leicester", count: "12,400+", image: "/cardImg.png" },
     { id: "5", city: "Birmingham", count: "9,800+", image: "/cardImg.png" },
     { id: "6", city: "Edinburgh", count: "8,200+", image: "/cardImg.png" },
-    { id: "7", city: "Leicester", count: "12,400+", image: "/cardImg.png" },
-    { id: "8", city: "Birmingham", count: "9,800+", image: "/cardImg.png" },
-    { id: "9", city: "Edinburgh", count: "8,200+", image: "/cardImg.png" },
 ];
 
 function LocationCard({ location }: { location: Location }) {

@@ -3,27 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Drawer, Button, Dropdown } from "antd";
+import { Drawer, Button, Dropdown, Grid } from "antd";
 import { MenuOutlined, CloseOutlined, DownOutlined } from "@ant-design/icons";
 import NavActions from "./NavActions";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
+const { useBreakpoint } = Grid;
 
 const mobileLinks = [
-    // { label: "Buy", href: "/buy" },
-    // { label: "Rent", href: "/rent" },
-    // { label: "For Agents", href: "/for-agents" },
-    // { label: "Blog", href: "/blog" },
     { label: "Home", href: "/home" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
 ];
 
 const links = [
-    // { label: "Buy", href: "/buy" },
-    // { label: "Rent", href: "/rent" },
-    // { label: "For Agents", href: "/for-agents" },
-    // { label: "Blog", href: "/blog" },
     { label: "Home", href: "/home" },
     { label: "Pricing", href: "/pricing" },
     { label: "About", href: "/about" },
@@ -32,6 +26,14 @@ const links = [
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const pathname = usePathname();
+    const screens = useBreakpoint();
+
+    // Auto-close drawer when switching to desktop
+    useEffect(() => {
+        if (screens.md) {
+            setDrawerOpen(false);
+        }
+    }, [screens.md]);
 
     return (
         <header className="w-full bg-white shadow-sm sticky top-0 z-50">
@@ -44,9 +46,11 @@ export default function Navbar() {
                             alt="MyHome Logo"
                             width={100}
                             height={100}
-                            className="rounded-xl w-12"
+                            className="rounded-xl w-10 sm:w-12 transition-all"
                         />
-                        <span className="font-semibold text-2xl">MyHome</span>
+                        <span className="font-black text-xl sm:text-2xl tracking-tight text-[#1a3c6e] hidden xs:block">
+                            MyHome
+                        </span>
                     </div>
                 </Link>
 
@@ -88,69 +92,89 @@ export default function Navbar() {
                     </Dropdown>
                 </nav>
 
-                {/* Desktop Actions */}
-                <div >
+                {/* Actions */}
+                <div className="flex items-center gap-1 sm:gap-4">
                     <NavActions />
-                    <Button
-                        type="text"
-                        icon={<MenuOutlined className="text-xl" />}
-                        className="md:hidden!"
-                        onClick={() => setDrawerOpen(true)}
-                    />
-
+                    {!screens.md && (
+                        <Button
+                            type="text"
+                            icon={<MenuOutlined className="text-xl" />}
+                            className="flex items-center justify-center h-10 w-10 p-0 rounded-xl hover:bg-gray-50"
+                            onClick={() => setDrawerOpen(true)}
+                            id="mobile-menu-trigger"
+                        />
+                    )}
                 </div>
 
             </div>
 
-            {/* Mobile Drawer */}
-            <Drawer
-                title={
-                    <Link href="/" onClick={() => setDrawerOpen(false)}>
-                        <Image src="/logo.png" alt="MyHome" width={40} height={40} className="rounded-xl" />
-                    </Link>
-                }
-                placement="right"
-                onClose={() => setDrawerOpen(false)}
-                open={drawerOpen}
-                closeIcon={<CloseOutlined />}
-                width={280}
-            >
-                <nav className="flex flex-col gap-4 mt-2">
-                    {mobileLinks.map((link) => {
-                        const isActive = pathname === link.href;
-
-                        return (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                onClick={() => setDrawerOpen(false)}
-                                className={`px-3 py-2 rounded-md font-medium text-base transition-all
-                ${isActive
-                                        ? "bg-[#1a3c6e] text-white"
-                                        : "text-gray-700 hover:text-[#1a3c6e]"
-                                    }`}
-                            >
-                                {link.label}
+            {/* Mobile Drawer - Strictly Conditional Rendering for Web Version */}
+            {!screens.md && (
+                <Drawer
+                    placement="right"
+                    onClose={() => setDrawerOpen(false)}
+                    open={drawerOpen}
+                    closeIcon={null}
+                    width={300}
+                    styles={{ body: { padding: 0 } }}
+                >
+                    <div className="flex flex-col h-full">
+                        {/* Drawer Header */}
+                        <div className="p-6 bg-gray-50/50 flex items-center justify-between border-b border-gray-100">
+                            <Link href="/" onClick={() => setDrawerOpen(false)} className="flex items-center gap-2">
+                                <Image src="/logo.png" alt="MyHome" width={32} height={32} className="rounded-lg" />
+                                <span className="font-bold text-[#1a3c6e] text-lg">MyHome</span>
                             </Link>
-                        );
-                    })}
-                    
-                    {/* Mobile More Links */}
-                    <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-gray-100">
-                        <Link href="/terms-condition" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">Terms & Conditions</Link>
-                        <Link href="/privacy" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">Privacy Policy</Link>
-                        <Link href="/faq" onClick={() => setDrawerOpen(false)} className="px-3 py-2 rounded-md font-medium text-base text-gray-700 hover:text-[#1a3c6e] transition-all">FAQ</Link>
+                            <Button
+                                type="text"
+                                icon={<CloseOutlined className="text-gray-400" />}
+                                onClick={() => setDrawerOpen(false)}
+                                className="hover:bg-white rounded-lg h-10 w-10 flex items-center justify-center"
+                            />
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto py-4 px-4">
+                            {/* Auth Section in Drawer */}
+                            <div className="mb-6 p-4 bg-[#1a3c6e]/5 rounded-2xl">
+                                <NavActions />
+                            </div>
+
+                            <nav className="flex flex-col gap-1">
+                                <p className="px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">Main Menu</p>
+                                {mobileLinks.map((link) => {
+                                    const isActive = pathname === link.href;
+                                    return (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            onClick={() => setDrawerOpen(false)}
+                                            className={`flex items-center gap-3 px-4 py-3.5 rounded-xl font-bold text-[15px] transition-all
+                                        ${isActive
+                                                    ? "bg-[#1a3c6e] text-white shadow-lg shadow-[#1a3c6e]/20"
+                                                    : "text-gray-600 hover:bg-gray-50 hover:text-[#1a3c6e]"
+                                                }`}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    );
+                                })}
+
+                                <div className="h-[1px] bg-gray-50 my-4 mx-4" />
+                                <p className="px-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-2">Support & Legal</p>
+
+                                <Link href="/terms-condition" onClick={() => setDrawerOpen(false)} className="flex items-center gap-3 px-4 py-3 text-gray-600 font-bold text-[15px] hover:text-[#1a3c6e]">Terms & Conditions</Link>
+                                <Link href="/privacy" onClick={() => setDrawerOpen(false)} className="flex items-center gap-3 px-4 py-3 text-gray-600 font-bold text-[15px] hover:text-[#1a3c6e]">Privacy Policy</Link>
+                                <Link href="/faq" onClick={() => setDrawerOpen(false)} className="flex items-center gap-3 px-4 py-3 text-gray-600 font-bold text-[15px] hover:text-[#1a3c6e]">FAQ</Link>
+                            </nav>
+                        </div>
+
+                        {/* Drawer Footer */}
+                        <div className="p-6 border-t border-gray-50 bg-gray-50/30 text-center">
+                            <p className="text-[11px] text-gray-400 font-medium">© 2026 MyHome Platform</p>
+                        </div>
                     </div>
-                    <div className="mt-4 flex flex-col gap-3">
-                        <Button block size="large" className="!border-[#1a3c6e] !text-[#1a3c6e]" href="/auth/sign-in">
-                            Sign In
-                        </Button>
-                        <Button block type="primary" size="large" className="!bg-[#1a3c6e]" href="/auth/signup">
-                            Sign Out
-                        </Button>
-                    </div>
-                </nav>
-            </Drawer>
+                </Drawer>
+            )}
         </header>
     );
 }
