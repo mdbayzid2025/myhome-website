@@ -10,38 +10,38 @@ interface Props {
 export default function AddressForm({ data, onChange }: Props) {
   return (
     <div>
-      <p className="text-sm font-bold text-gray-900 mb-4">Address</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <h3 className="text-base font-bold text-gray-900 mb-5 pb-2 border-b border-gray-100">Address</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs text-gray-500 mb-1.5">Address Line</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Address Line</label>
           <Input
             value={data.addressLine}
             onChange={(e) => onChange("addressLine", e.target.value)}
-            className="rounded-lg h-10"
+            className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1.5">City / Town</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">City / Town</label>
           <Input
             value={data.city}
             onChange={(e) => onChange("city", e.target.value)}
-            className="rounded-lg h-10"
+            className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1.5">Postcode</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Postcode</label>
           <Input
             value={data.postcode}
             onChange={(e) => onChange("postcode", e.target.value)}
-            className="rounded-lg h-10"
+            className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1.5">Country</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Country</label>
           <Input
             value={data.country}
             onChange={(e) => onChange("country", e.target.value)}
-            className="rounded-lg h-10"
+            className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
           />
         </div>
       </div>

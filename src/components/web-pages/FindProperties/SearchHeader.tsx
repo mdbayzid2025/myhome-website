@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'antd';
 import { MapPin, SlidersHorizontal, Search } from 'lucide-react';
+import FilterModal from './FilterModal';
 
 export const SearchHeader = ({ setViewMode }: { setViewMode: (tab: "list" | "map") => void }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   return (
     <div className="bg-[#0f2d5e] pt-6 pb-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -24,7 +27,8 @@ export const SearchHeader = ({ setViewMode }: { setViewMode: (tab: "list" | "map
             <Button
               size="large"
               icon={<SlidersHorizontal size={18} />}
-              className="h-12 flex-1 md:flex-none flex items-center justify-center  border-gray-200 text-gray-700 hover:text-[#0f2d5e] hover:border-[#0f2d5e] rounded-md font-medium px-6"
+              onClick={() => setIsFilterOpen(true)}
+              className="h-12 flex-1 md:flex-none flex items-center justify-center border-gray-200 text-gray-700 hover:text-[#0f2d5e] hover:border-[#0f2d5e] rounded-md font-medium px-6"
             >
               Filter
             </Button>
@@ -39,6 +43,11 @@ export const SearchHeader = ({ setViewMode }: { setViewMode: (tab: "list" | "map
           </div>
         </div>
       </div>
+
+      <FilterModal 
+        isOpen={isFilterOpen} 
+        onClose={() => setIsFilterOpen(false)} 
+      />
     </div>
   );
 };

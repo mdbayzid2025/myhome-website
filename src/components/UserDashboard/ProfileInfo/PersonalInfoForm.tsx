@@ -10,31 +10,31 @@ interface Props {
 export default function PersonalInfoForm({ data, onChange }: Props) {
     return (
         <div>
-            <p className="text-sm font-bold text-gray-900 mb-4">Personal Information</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <h3 className="text-base font-bold text-gray-900 mb-5 pb-2 border-b border-gray-100">Personal Information</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                    <label className="block text-xs text-gray-500 mb-1.5">Full Name</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
                     <Input
                         value={data.fullName}
                         onChange={(e) => onChange("fullName", e.target.value)}
-                        className="rounded-lg h-10"
+                        className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
                     />
                 </div>
                 <div>
-                    <label className="block text-xs text-gray-500 mb-1.5">Email Address</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                     <Input
                         type="email"
                         value={data.email}
                         onChange={(e) => onChange("email", e.target.value)}
-                        className="rounded-lg h-10"
+                        className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
                     />
                 </div>
-                <div className="sm:col-span-1">
-                    <label className="block text-xs text-gray-500 mb-1.5">Phone Number</label>
+                <div className="md:col-span-1">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
                     <Input
                         value={data.phone}
                         onChange={(e) => onChange("phone", e.target.value)}
-                        className="rounded-lg h-10"
+                        className="rounded-xl h-12 bg-gray-50/50 border-gray-200 hover:border-[#0f2d5e]/50 focus:border-[#0f2d5e] focus:ring-4 focus:ring-[#0f2d5e]/10 transition-all text-base"
                     />
                 </div>
             </div>

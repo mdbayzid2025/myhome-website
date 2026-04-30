@@ -80,7 +80,7 @@ export default function PopularLocations() {
 
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <p className="text-[#00c896] text-xs font-bold uppercase tracking-widest mb-2">
+                    <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-widest mb-2">
                         Explore by Location
                     </p>
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">

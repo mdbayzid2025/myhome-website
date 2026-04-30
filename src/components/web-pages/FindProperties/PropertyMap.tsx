@@ -54,7 +54,7 @@ export default function PropertyMap({ properties }: Props) {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
-              <span className="font-extrabold text-xl text-[#00c896]">£875,000</span>
+              <span className="font-extrabold text-xl text-[#14b8a6]">£875,000</span>
               <span className="text-[10px] bg-[#0f2d5e] text-white px-2 py-0.5 rounded font-bold">FEATURED</span>
             </div>
             <p className="font-semibold mt-1">4 bed House</p>

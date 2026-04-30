@@ -123,7 +123,7 @@ export default function PropertyCard({ property }: Props) {
 
           {/* Price + Featured banner */}
           <div className="absolute bottom-0 left-0 right-0 z-10 flex">
-            <div className="flex-1 bg-[#00c896] px-4 py-2.5">
+            <div className="flex-1 bg-[#14b8a6] px-4 py-2.5">
               <span className="text-white font-extrabold text-xl tracking-tight">
                 £{property.price.toLocaleString()}
               </span>
