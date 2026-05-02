@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -14,7 +15,7 @@ const tabConfig: Record<SearchTab, { label: string; placeholder: string; path: s
 };
 
 export default function HeroSection() {
-    const [activeTab, setActiveTab] = useState<any>("find-properties");
+    const [activeTab, setActiveTab] = useState<SearchTab>("buy");
     const [query, setQuery] = useState("");
     const router = useRouter();
 
@@ -31,7 +32,9 @@ export default function HeroSection() {
         <section className="relative w-full h-[520px] sm:h-[580px] md:h-[640px] flex items-center justify-center overflow-hidden">
             {/* Background image */}
             <Image
-                src="/heroImg.jpg"
+                // src="/heroImg.jpg"
+                // src="/imgBg.jpg"
+                src="/homeImg.png"
                 alt="Beautiful property"
                 fill
                 className="object-cover object-center rounded-3xl"
@@ -50,19 +53,19 @@ export default function HeroSection() {
                 </h1>
 
                 {/* Search card */}
-                <div className="w-full bg-[#0f2d5e]/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
+                <div className="w-full bg-[#113157] rounded-xl shadow-2xl p-6 sm:p-8">
 
                     {/* Tabs */}
-                    <div className="flex">
+                    <div className="flex w-full mb-6">
                         {(Object.keys(tabConfig) as SearchTab[]).map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 className={`
-                  flex-1 py-4 text-base font-bold tracking-wide transition-all duration-200
+                  flex-1 pb-3 text-lg font-bold tracking-wide transition-all duration-200
                   ${activeTab === tab
                                         ? "text-white border-b-2 border-white"
-                                        : "text-white/50 border-b-2 border-white/10 hover:text-white/80"
+                                        : "text-white/50 border-b-[1px] border-white/30 hover:text-white/80"
                                     }
                 `}
                             >
@@ -72,7 +75,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Search row */}
-                    <div className="px-5 pb-6 pt-4 flex flex-col sm:flex-row gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         {/* Label */}
                         <div className="w-full flex flex-col gap-2">
                             <span className="text-white/70 text-sm pl-1">
@@ -89,7 +92,7 @@ export default function HeroSection() {
                                     placeholder="Search by location or postcode or place"
                                     prefix={<SearchOutlined className="text-gray-400 text-base" />}
                                     className="
-                    flex-1 !rounded-xl !border-0 !bg-white
+                    flex-1 !rounded-md !border-0 !bg-white
                     !text-gray-700 !placeholder-gray-400
                     !h-12 !text-sm
                   "
@@ -101,7 +104,7 @@ export default function HeroSection() {
                                     size="large"
                                     onClick={handleSearch}
                                     className="
-                                    !h-12 !px-7 !rounded-xl !border-0
+                                    !h-12 !px-7 !rounded-md !border-0
                                     !bg-[#00d4a1] hover:!bg-[#00c090]
                                     !text-gray-900 !font-bold !text-sm
                                     whitespace-nowrap shrink-0 transition-colors
