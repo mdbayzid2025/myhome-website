@@ -28,8 +28,8 @@ const LoadingScreen = () => {
                     <div className="relative flex flex-col items-center">
                         {/* The Bouncing Logo */}
                         <div className="animate-bounce-custom">
-                            <div className="flex relat   h-20 w-20 items-center justify-center rounded-2xl bg-blue-600 shadow-xl">
-                                <Image src="/logo.png" alt="Logo" width={50} height={50} />
+                            <div className="flex relative h-20 w-20 items-center justify-center rounded-2xl bg-blue-600 shadow-xl">
+                                <Image src="/logo.png" alt="Logo" fill sizes="80px" className="p-2" />
                             </div>
                         </div>
 
