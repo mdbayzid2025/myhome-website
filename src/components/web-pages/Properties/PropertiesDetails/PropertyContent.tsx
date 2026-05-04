@@ -1,13 +1,11 @@
+"use client";
+
 import React from 'react';
 import { Bed, Bath, Square, Home, CheckCircle2 } from 'lucide-react';
-import { Table } from 'antd';
+import Image from 'next/image';
 
 export const PropertyContent = () => {
-  // Property Info Table Columns & Data
-  const columns = [
-    { title: 'Feature', dataIndex: 'feature', key: 'feature', className: 'text-gray-500 font-medium w-1/3' },
-    { title: 'Value', dataIndex: 'value', key: 'value', className: 'text-gray-900 font-medium' },
-  ];
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
   const data = [
     { key: '1', feature: 'Tenure', value: 'Freehold' },
@@ -15,6 +13,8 @@ export const PropertyContent = () => {
     { key: '3', feature: 'EPC Rating', value: 'C' },
     { key: '4', feature: 'Open to Offers', value: 'Yes' },
     { key: '5', feature: 'Virtual Viewings', value: 'Available' },
+    { key: '6', feature: 'Listed On', value: '15 January 2024' },
+    { key: '7', feature: 'Days on Market', value: '15' },
   ];
 
   const keyFeatures = [
@@ -27,6 +27,8 @@ export const PropertyContent = () => {
     'Wine Cellar',
     'Recently Renovated'
   ];
+
+  const fullDescription = "An exquisite Victorian townhouse in the heart of Notting Hill. This beautifully restored property features original period details combined with modern luxury. The open-plan kitchen-diner leads to a stunning landscaped garden, perfect for entertaining. The upper floors provide generous bedroom accommodation and contemporary bathrooms. The lower ground floor features a state-of-the-art media room and a private wine cellar. Every detail has been meticulously considered, from the reclaimed oak flooring to the bespoke marble finishes in the master suite. This is a rare opportunity to acquire a truly unique home in one of London's most sought-after locations.";
 
   return (
     <div className="space-y-10">
@@ -53,9 +55,15 @@ export const PropertyContent = () => {
       {/* Description */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-3">Property Description</h3>
-        <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-          An exquisite Victorian townhouse in the heart of Notting Hill. This beautifully restored property features original period details combined with modern luxury. The open-plan kitchen-diner leads to a stunning landscaped garden, perfect for entertaining. The upper floors provide generous bedroom accommodation and contemporary bathrooms.
+        <p className={`text-gray-600 leading-relaxed text-sm transition-all duration-300 ${!isExpanded ? 'line-clamp-3' : ''}`}>
+          {fullDescription}
         </p>
+        <button 
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="text-[#14b8a6] font-semibold text-sm mt-3 hover:underline flex items-center gap-1"
+        >
+          {isExpanded ? 'Show less' : 'Read more description'}
+        </button>
       </div>
 
       {/* Key Features */}
@@ -63,7 +71,7 @@ export const PropertyContent = () => {
         <h3 className="text-xl font-bold text-gray-900 mb-4">Key Features</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
           {keyFeatures.map((feature, idx) => (
-            <div key={idx} className="flex items-center gap-2 text-gray-600 text-sm md:text-base">
+            <div key={idx} className="flex items-center gap-2 text-gray-600 text-sm">
               <CheckCircle2 className="text-teal-500" size={18} />
               <span>{feature}</span>
             </div>
@@ -74,21 +82,24 @@ export const PropertyContent = () => {
       {/* Property Information Table */}
       <div>
         <h3 className="text-xl font-bold text-gray-900 mb-4">Property Information</h3>
-        <div className="border border-gray-100 bg-white rounded-lg overflow-hidden">
-          <Table          
-            columns={columns}
-            dataSource={data}
-            pagination={false}
-            showHeader={false}
-            rowClassName="hover:bg-white"
-          />
+        <div className="bg-white rounded-xl overflow-hidden border border-gray-100 divide-y divide-gray-100 shadow-sm">
+            {data.map((item, index) => (
+                <div key={item.key} className={`flex items-center px-5 py-3 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                    <div className="w-[40%] text-gray-500 font-medium text-sm">{item.feature}</div>
+                    <div className="w-[60%] text-gray-900 font-medium text-sm">{item.value}</div>
+                </div>
+            ))}
         </div>
       </div>
 
       {/* Energy Performance */}
       <div>
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Energy Performance</h3>
-        <div className="border border-gray-100 rounded-lg p-5">
+        <h3 className="text-xl font-bold text-gray-900 mb-3">Energy Performance</h3>
+        <p className="text-gray-600 text-sm mb-2">
+            Current Rating for this property is C. Find out how you can improve this property's energy efficiency.
+        </p>
+        <button className="text-[#14b8a6] font-semibold text-sm mb-4 hover:underline">Energy Report</button>
+        <div className="border border-gray-100 rounded-lg p-5 bg-white shadow-sm">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <div className="bg-[#009254] text-white text-xs font-bold px-3 py-1 w-[40%] rounded-sm h-6 flex justify-between items-center">
@@ -139,6 +150,8 @@ export const PropertyContent = () => {
           </div>
         </div>
       </div>
+
+
 
     </div>
   );

@@ -6,6 +6,7 @@ export interface ProfileFormData {
   city: string;
   postcode: string;
   country: string;
+  language?: string;
 }
 
 export interface PasswordFormData {

@@ -63,19 +63,41 @@ export default function Signup() {
         }
         requiredMark={false}
       >
-        <Form.Item name="name" label={<span className="text-sm font-medium text-gray-700">Name</span>} rules={[{ required: true, message: "Name is required" }]}>
-          <Input prefix={<UserOutlined className="text-gray-400" />} placeholder="Enter your name" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
+        <Form.Item name="name" label={<span className="text-sm font-medium text-gray-700">Full Name</span>} rules={[{ required: true, message: "Full Name is required" }]}>
+          <Input prefix={<UserOutlined className="text-gray-400" />} placeholder="Enter your full name" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
         </Form.Item>
-        <Form.Item name="email" label={<span className="text-sm font-medium text-gray-700">Email</span>} rules={[{ required: true, message: "Email is required" }]}>
-          <Input prefix={<MailOutlined className="text-gray-400" />} placeholder="Enter your email" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
+        
+        {isAgent && (
+          <Form.Item name="agencyName" label={<span className="text-sm font-medium text-gray-700">Agency / Company Name</span>} rules={[{ required: true, message: "Agency Name is required" }]}>
+            <Input prefix={<UserOutlined className="text-gray-400" />} placeholder="Enter your agency name" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
+          </Form.Item>
+        )}
+
+        <Form.Item name="email" label={<span className="text-sm font-medium text-gray-700">Email Address</span>} rules={[{ required: true, message: "Email is required" }, { type: "email", message: "Enter a valid email" }]}>
+          <Input prefix={<MailOutlined className="text-gray-400" />} placeholder="your.email@example.com" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
         </Form.Item>
 
-        <Form.Item name="password" label={<span className="text-sm font-medium text-gray-700">Password</span>} rules={[{ required: true, message: "Password is required" }]}>
-          <Input.Password prefix={<LockOutlined className="text-gray-400" />} placeholder="Enter your password" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
+        <Form.Item name="password" label={<span className="text-sm font-medium text-gray-700">Password</span>} rules={[{ required: true, message: "Password is required" }, { min: 8, message: "Minimum 8 characters" }]}>
+          <Input.Password prefix={<LockOutlined className="text-gray-400" />} placeholder="Min 8 characters" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
         </Form.Item>
 
-        <Form.Item name="confirmPassword" label={<span className="text-sm font-medium text-gray-700">Confirm Password</span>} rules={[{ required: true, message: "Passdonot matchPassword is required" }]}>
-          <Input.Password prefix={<LockOutlined className="text-gray-400" />} placeholder="Enter your password" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
+        <Form.Item 
+          name="confirmPassword" 
+          label={<span className="text-sm font-medium text-gray-700">Confirm Password</span>} 
+          dependencies={['password']}
+          rules={[
+            { required: true, message: "Please confirm your password" },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('Passwords do not match!'));
+              },
+            }),
+          ]}
+        >
+          <Input.Password prefix={<LockOutlined className="text-gray-400" />} placeholder="Repeat Password" size="large" className="!rounded-lg !border-gray-200 hover:!border-[#1a3c6e] focus:!border-[#1a3c6e]" />
         </Form.Item>
 
         <Form.Item

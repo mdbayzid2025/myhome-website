@@ -92,7 +92,7 @@ export default function PropertyCard({ property }: Props) {
               backdrop-blur-sm transition-all duration-200
               ${isBeginning
                 ? "bg-white/30 text-white/40 cursor-not-allowed"
-                : "bg-white/80 text-[#0f2d5e] hover:bg-white hover:scale-105 shadow-md cursor-pointer"
+                : "bg-white/80 text-[#1a3c6e] hover:bg-white hover:scale-105 shadow-md cursor-pointer"
               }
             `}
           >
@@ -109,7 +109,7 @@ export default function PropertyCard({ property }: Props) {
               backdrop-blur-sm transition-all duration-200
               ${isEnd
                 ? "bg-white/30 text-white/40 cursor-not-allowed"
-                : "bg-white/80 text-[#0f2d5e] hover:bg-white hover:scale-105 shadow-md cursor-pointer"
+                : "bg-white/80 text-[#1a3c6e] hover:bg-white hover:scale-105 shadow-md cursor-pointer"
               }
             `}
           >
@@ -117,21 +117,21 @@ export default function PropertyCard({ property }: Props) {
           </button>
 
           {/* Photo counter badge */}
-          <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-[#0f2d5e]/85 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg">
+          <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-[#1a3c6e]/85 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg">
             <CameraOutlined className="text-xs" />
             {currentSlide}/{total}
           </div>
 
           {/* Price + Featured banner */}
           <div className="absolute bottom-0 left-0 right-0 z-10 flex">
-            <div className="flex-1 bg-[#00c896] px-4 py-2.5">
+            <div className="flex-1 bg-[#14b8a6] px-4 py-2.5">
               <span className="text-white font-extrabold text-xl tracking-tight">
                 £{property.price.toLocaleString()}
               </span>
             </div>
             {property.featured && (
-              <div className="bg-[#0f2d5e] px-4 py-2.5 flex items-center justify-center text-center">
-                <span className="text-white text-[10px] font-bold uppercase leading-tight tracking-wide">
+              <div className="bg-[#1a3c6e] px-5 py-2.5 flex items-center justify-center text-center min-w-[120px]">
+                <span className="text-white text-xs font-bold uppercase leading-tight tracking-wider">
                   Featured<br />Property
                 </span>
               </div>
@@ -143,10 +143,10 @@ export default function PropertyCard({ property }: Props) {
         <div className="px-4 pt-4 pb-5">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
-              <h3 className="font-bold text-gray-900 text-base truncate group-hover:text-[#0f2d5e] transition-colors">
+              <h3 className="font-bold text-gray-900 text-base truncate group-hover:text-[#1a3c6e] transition-colors">
                 {property.title}
               </h3>
-              <p className="text-[#0f2d5e] text-sm mt-0.5 truncate">
+              <p className="text-[#1a3c6e] text-sm mt-0.5 truncate">
                 {property.address}
               </p>
             </div>

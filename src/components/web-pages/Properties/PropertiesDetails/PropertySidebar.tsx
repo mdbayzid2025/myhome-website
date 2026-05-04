@@ -1,8 +1,9 @@
 // components/web-pages/Properties/PropertiesDetails/PropertySidebar.tsx
 'use client';
-import React from 'react';
-import Image from 'next/image';
+import { Button } from 'antd';
+import { Download, FileText } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 // ✅ KEY FIX: ssr: false দিলে hydration mismatch হবে না
 const ContactAgentForm = dynamic(() => import('./ContactAgentForm'), {
@@ -21,43 +22,64 @@ export const PropertySidebar = () => {
   return (
     <div className="space-y-6">
       {/* Contact Agent Card */}
-      <div className="bg-white border text-center border-gray-100 rounded-xl p-6 shadow-sm">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-12 w-12 bg-[#001B4D] rounded text-white flex items-center justify-center font-bold text-xl uppercase">
-            KN
+      <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+        {/* Top Property Snippet */}
+        <div className="bg-[#0f2d5e] p-4 flex gap-4 items-center">
+          <div className="relative w-16 h-12 rounded overflow-hidden flex-shrink-0">
+            <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=400" alt="property" fill className="object-cover" unoptimized />
           </div>
-          <div className="text-left">
-            <h4 className="font-bold text-gray-900">Knight Frank</h4>
-            <p className="text-sm text-gray-500">Sarah Mitchell</p>
-            <p className="text-sm font-semibold text-[#1E3A8A] flex items-center gap-1 mt-1">
-              +44 20 7861 1111
-            </p>
+          <div>
+            <p className="text-white font-bold text-lg leading-tight">£1,250,000</p>
+            <p className="text-[#14b8a6] text-xs font-medium">10,240 sqft | Notting Hill</p>
           </div>
         </div>
 
-        <h4 className="font-bold text-gray-900 mb-4 text-left">Contact Agent</h4>
+        <div className="p-6">
+          <h4 className="font-bold text-gray-900 mb-4 text-left text-lg">Contact Agent</h4>
 
-        {/* ✅ Dynamically loaded - no SSR hydration issue */}
-        <ContactAgentForm />
-      </div>
+          {/* ✅ Dynamically loaded - no SSR hydration issue */}
+          <ContactAgentForm />
+        </div>
 
-      {/* Location card */}
-      <div>
-        <h4 className="font-bold text-gray-900 mb-4">Location</h4>
-        <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm relative h-[250px] cursor-pointer group">
-          <Image
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
-            alt="Map location placeholder"
-            fill
-            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-            unoptimized
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white px-4 py-2 rounded-full shadow-lg text-sm font-semibold text-gray-900 flex items-center gap-2">
-              <MapPinIcon size={16} className="text-[#1E3A8A]" /> View on Map
+        {/* Location card */}
+        <div className='p-4'>
+          <h4 className="font-bold text-gray-900 mb-4">Location</h4>
+          <div className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm relative h-[250px] cursor-pointer group">
+            <Image
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800"
+              alt="Map location placeholder"
+              fill
+              className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              unoptimized
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white px-4 py-2 rounded-full shadow-lg text-sm font-semibold text-gray-900 flex items-center gap-2">
+                <MapPinIcon size={16} className="text-[#1E3A8A]" /> View on Map
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Brochure Section */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+          <div className="flex items-start gap-4 mb-5">
+            <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center text-red-500 shrink-0">
+              <FileText size={24} />
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-900 leading-tight">Property Brochure</h4>
+              <p className="text-xs text-gray-500 mt-1">Get the full property details, floorplans, and specs in a PDF format.</p>
+            </div>
+          </div>
+          <Button
+            icon={<Download size={16} />}
+            className="w-full h-11 border-2 border-gray-100 hover:border-[#1a3c6e] hover:text-[#1a3c6e] rounded-xl flex items-center justify-center gap-2 font-bold transition-all"
+            onClick={() => window.open('/sample-brochure.pdf', '_blank')}
+          >
+            Download Brochure
+          </Button>
+        </div>
+
       </div>
     </div>
   );

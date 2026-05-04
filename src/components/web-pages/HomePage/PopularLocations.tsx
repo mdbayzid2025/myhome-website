@@ -24,16 +24,12 @@ const mockLocations: Location[] = [
     { id: "4", city: "Leicester", count: "12,400+", image: "/cardImg.png" },
     { id: "5", city: "Birmingham", count: "9,800+", image: "/cardImg.png" },
     { id: "6", city: "Edinburgh", count: "8,200+", image: "/cardImg.png" },
-    { id: "7", city: "Leicester", count: "12,400+", image: "/cardImg.png" },
-    { id: "8", city: "Birmingham", count: "9,800+", image: "/cardImg.png" },
-    { id: "9", city: "Edinburgh", count: "8,200+", image: "/cardImg.png" },
 ];
 
 function LocationCard({ location }: { location: Location }) {
     return (
         <Link
-            href={`/buy?location=`}
-            // href={`/buy?location=${encodeURIComponent(location.city)}`}
+            href={`/find-properties?location=${encodeURIComponent(location.city)}`}
             className="flex flex-col items-center gap-2 group"
         >
             <div className="relative w-full h-40 sm:h-44 rounded-2xl overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
@@ -81,7 +77,7 @@ export default function PopularLocations() {
 
                 {/* Header */}
                 <div className="text-center mb-10">
-                    <p className="text-[#00c896] text-xs font-bold uppercase tracking-widest mb-2">
+                    <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-widest mb-2">
                         Explore by Location
                     </p>
                     <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">

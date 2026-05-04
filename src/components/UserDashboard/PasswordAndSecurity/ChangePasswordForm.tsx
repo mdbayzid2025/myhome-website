@@ -21,7 +21,7 @@ const strengthConfig = [
     { label: "Weak", color: "bg-red-400" },
     { label: "Fair", color: "bg-orange-400" },
     { label: "Good", color: "bg-yellow-400" },
-    { label: "Strong", color: "bg-[#00c896]" },
+    { label: "Strong", color: "bg-[#14b8a6]" },
 ];
 
 export default function ChangePasswordForm() {

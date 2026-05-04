@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Drawer, Button } from "antd";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
+import { Drawer, Button, Dropdown, Grid } from "antd";
+import { MenuOutlined, CloseOutlined, DownOutlined } from "@ant-design/icons";
 import NavActions from "./NavActions";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const navLinks = [
     { label: "Home", href: "/home" },
@@ -17,6 +18,8 @@ const navLinks = [
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const pathname = usePathname();
+
+
 
     return (
         <header className="w-full bg-white shadow-sm sticky top-0 z-50">
@@ -114,6 +117,6 @@ export default function Navbar() {
                     </div>
                 </nav>
             </Drawer>
-        </header>
+        </header >
     );
 }
