@@ -39,8 +39,6 @@ export default function DashboardSidebar({
   }, [pathname]);
 
   const menuItems = [
-    { key: "save-properties", icon: <HeartOutlined className="fill-red-600!" />, label: "Saved Properties" },
-    { key: "saved-search", icon: <SearchOutlined />, label: "Saved Searches" },
     { key: "enquiries", icon: <SendOutlined />, label: "My Enquiries" },
     { key: "user-notifications", icon: <BellOutlined />, label: "Alerts & Notifications" },
     { key: "profile", icon: <UserOutlined />, label: "Personal Information" },
@@ -48,12 +46,12 @@ export default function DashboardSidebar({
   ];
 
   const handleSetQuery = (value: boolean) => {
-  const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
 
-  params.set("collapsed", String(value));
+    params.set("collapsed", String(value));
 
-  router.replace(`?${params.toString()}`, { scroll: false });
-};
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
 
   const handleLogOut = () => {
     toast.warning("Are you sure you want to log out?", {
@@ -117,7 +115,7 @@ export default function DashboardSidebar({
               </Text>
               <Text className="text-xs text-[#6b7280]">Administrator</Text>
               <div className="mt-1">
-                <Tag className="bg-primary! border-primary! text-white! text-[10px] leading-4 px-1.5 rounded m-0">
+                <Tag className="bg-primary! border-primary! text-white! text-[10px] leading-4 px-1.5 rounded m-0 font-normal">
                   Premium Plan
                 </Tag>
               </div>
@@ -151,10 +149,10 @@ export default function DashboardSidebar({
             type="text"
             icon={<LogoutOutlined className="text-red-500" />}
             onClick={handleLogOut}
-            className={`w-full h-12 flex items-center gap-2 text-red-500 hover:text-red-600 font-medium text-sm rounded-none ${collapsed ? "justify-center pl-0" : "justify-start pl-6"
+            className={`w-full h-12 flex items-center gap-2 text-red-500 hover:text-red-600 font-bold text-sm rounded-none ${collapsed ? "justify-center pl-0" : "justify-start pl-6"
               }`}
           >
-            {!collapsed && "Log Out"}
+            {!collapsed && "Sign Out"}
           </Button>
         </div>
       </div>

@@ -57,8 +57,8 @@ body {
 }
 
 
-.poppins {
-  font-family: "Poppins", sans-serif;
+.inter {
+  font-family: var(--font-inter), "Inter", sans-serif;
   font-weight: 400;
   font-style: normal;
 }

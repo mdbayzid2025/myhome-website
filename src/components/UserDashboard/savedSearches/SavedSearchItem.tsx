@@ -30,8 +30,8 @@ export default function SavedSearchItem({ item, onToggleAlert, onRemove, isLast 
                     onClick={() => onToggleAlert(item.id)}
                     icon={item.alertOn ? <BellFilled /> : <BellOutlined />}
                     className={`rounded-lg font-semibold text-sm px-4 h-9 border transition-all ${item.alertOn
-                            ? "!bg-green-50 !border-green-200 !text-green-600 hover:!bg-green-100"
-                            : "!bg-gray-50 !border-gray-200 !text-gray-500 hover:!bg-gray-100"
+                        ? "!bg-green-50 !border-green-200 !text-green-600 hover:!bg-green-100"
+                        : "!bg-gray-50 !border-gray-200 !text-gray-500 hover:!bg-gray-100"
                         }`}
                 >
                     {item.alertOn ? "Alert On" : "Alert Off"}
