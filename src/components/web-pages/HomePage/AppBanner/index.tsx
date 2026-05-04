@@ -65,7 +65,7 @@ export default function AppBanner() {
                                     alt="MyHome App - Splash Screen"
                                     width={220}
                                     height={440}
-                                    className="w-full h-auto object-contain z-20"
+                                    className="object-contain z-20 w-full h-auto"
                                     priority
                                 />
                             </div>
@@ -77,7 +77,7 @@ export default function AppBanner() {
                                     alt="MyHome App - Home Screen"
                                     width={220}
                                     height={440}
-                                    className="w-full h-auto object-contain"
+                                    className="object-contain w-full h-auto"
                                     priority
                                 />
                             </div>

@@ -41,6 +41,7 @@ function LocationCard({ location }: { location: Location }) {
                     src={location.image}
                     alt={location.city}
                     fill
+                    sizes="(max-width: 480px) 50vw, (max-width: 1024px) 33vw, 20vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
             </div>

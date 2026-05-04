@@ -43,7 +43,7 @@ const CreateProfileModal: React.FC<CreateProfileModalProps> = ({
         try {
           toast.promise(
             (async () => {
-              const res = await fetch(`${baseUrl}/api/auth/register`, {
+              const res = await fetch(`${baseUrl}/api/auth/signup`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

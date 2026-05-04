@@ -41,6 +41,7 @@ export default function MarketplaceSection() {
                 src="/platImg-1.jpg"
                 alt="Luxury property"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -51,6 +52,7 @@ export default function MarketplaceSection() {
                 src="/platImg-2.jpg"
                 alt="Property exterior"
                 fill
+                sizes="(max-width: 768px) 100vw, 20vw"
                 className="object-cover"
               />
             </div>

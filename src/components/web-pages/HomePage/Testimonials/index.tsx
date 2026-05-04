@@ -72,8 +72,8 @@ export default function Testimonials() {
                     }}
                     className="!pb-10"
                 >
-                    {testimonials.map((t) => (
-                        <SwiperSlide key={t.name}>
+                    {testimonials.map((t, index) => (
+                        <SwiperSlide key={`${t.name}-${index}`}>
                             <TestimonialCard {...t} />
                         </SwiperSlide>
                     ))}

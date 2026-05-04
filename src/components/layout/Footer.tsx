@@ -24,8 +24,8 @@ const quickLinks = [
 export default function Footer() {
     return (
         <footer
-            className="relative bg-cover bg-bottom bg-no-repeat"
-            style={{ backgroundImage: "url('/footerBg.jpg')" }}
+            className="relative bg-[url('/footerBg.jpg')] bg-cover bg-bottom bg-no-repeat"
+            suppressHydrationWarning
         >
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/50 z-0" />

@@ -49,6 +49,7 @@ export const PropertyGallery = () => {
             src="/about-img2.jpg"
             alt="Main property view"
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
@@ -60,6 +61,7 @@ export const PropertyGallery = () => {
               src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=600"
               alt="Living Room"
               fill
+              sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
 
             />
@@ -69,6 +71,7 @@ export const PropertyGallery = () => {
               src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80&w=600"
               alt="Exterior"
               fill
+              sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
 
             />
@@ -78,6 +81,7 @@ export const PropertyGallery = () => {
               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600"
               alt="Kitchen"
               fill
+              sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
 
             />
@@ -87,6 +91,7 @@ export const PropertyGallery = () => {
               src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=600"
               alt="Bathroom"
               fill
+              sizes="(max-width: 768px) 50vw, 25vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               unoptimized
             />

@@ -81,7 +81,7 @@ export default function PricingCard({ plan, isAnnual }: Props) {
                     ? "!bg-[#1a3c6e] !border-[#1a3c6e] !text-white"
                     : "!border-[#1a3c6e] !text-[#1a3c6e]"
                     }`}
-                href={isFree ? "/register" : `/register?plan=${plan.id}`}
+                href={isFree ? "/signup" : `/signup?plan=${plan.id}`}
             >
                 {plan.cta}
             </Button>

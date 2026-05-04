@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-
 import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
-
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { ConfigProvider } from "antd";
 import './globals.css';
-import { mainTheme } from "./theme";
+import AntdProvider from "./AntdProvider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -23,19 +20,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable}  antialiased poppins`}>
-        <ConfigProvider theme={mainTheme}>          
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable} antialiased`}>
+        <Toaster position="top-right" duration={1500} />
+        <AntdRegistry>
+          <AntdProvider>
             <Navbar />
-            <Toaster position="top-right" duration={1500} />
             {children}
-            <Footer />          
-        </ConfigProvider>
+            <Footer />
+          </AntdProvider>
+        </AntdRegistry>
       </body>
     </html>
   );

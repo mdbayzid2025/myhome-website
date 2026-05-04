@@ -74,6 +74,7 @@ export default function PropertyCard({ property }: Props) {
                     src={img}
                     alt={`${property.title} - image ${i + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>
@@ -157,6 +158,7 @@ export default function PropertyCard({ property }: Props) {
                   src={property.agentLogo}
                   alt="Agent"
                   fill
+                  sizes="48px"
                   className="object-contain"
                 />
               </div>
