@@ -11,6 +11,7 @@ export default function MissionSection() {
                             src="/about-img2.jpg"
                             alt="Modern house exterior"
                             fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
                             className="object-cover"
                         />
                     </div>
