@@ -6,16 +6,10 @@ export const metadata: Metadata = {
   description: "My Home",
 };
 
-export default async function RootLayout({
+export default function WebsiteLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-
-
-  return (
-    <div>
-      {children}
-    </div>
-  );
+}) {
+  return <>{children}</>;
 }

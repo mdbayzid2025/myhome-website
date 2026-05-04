@@ -25,21 +25,21 @@ export default function ProfilePhotoUpload() {
 
   return (
     <div>
-      <p className="text-sm font-semibold text-gray-700 mb-4">Profile Photo</p>
-      <div className="flex items-center gap-5">
+      <h3 className="text-base font-bold text-gray-900 mb-5 pb-2 border-b border-gray-100">Profile Photo</h3>
+      <div className="flex items-center gap-6">
         <div
-          className="relative w-16 h-16 rounded-full overflow-hidden cursor-pointer group"
+          className="relative w-24 h-24 rounded-full overflow-hidden cursor-pointer shadow-md group"
           onClick={() => inputRef.current?.click()}
         >
           {preview ? (
             <Image src={preview} alt="Avatar" fill className="object-cover" />
           ) : (
-            <div className="w-full h-full bg-[#0f2d5e] flex items-center justify-center text-white font-bold text-xl">
+            <div className="w-full h-full bg-gradient-to-tr from-[#0f2d5e] to-[#255099] flex items-center justify-center text-white font-bold text-3xl">
               {initials}
             </div>
           )}
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <CameraOutlined className="text-white text-lg" />
+            <CameraOutlined className="text-white text-2xl" />
           </div>
         </div>
 
@@ -47,11 +47,11 @@ export default function ProfilePhotoUpload() {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="px-4 py-2 text-sm font-medium border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+            className="px-5 py-2.5 text-sm font-semibold border border-gray-200 rounded-xl text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm"
           >
             Change Photo
           </button>
-          <p className="text-gray-400 text-xs mt-1.5">JPG, GIF or PNG. Max size of 5MB.</p>
+          <p className="text-gray-500 text-xs mt-2">JPG, GIF or PNG. Max size of 5MB.</p>
         </div>
       </div>
 

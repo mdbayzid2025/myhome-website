@@ -104,19 +104,15 @@ export default function VerifyOtpForm() {
     <div>
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="w-20 h-20 rounded-2xl  flex items-center justify-center mx-auto mb-4">
-          <Image height={100} width={100} src="/logo.png" alt="logo" />
+        <div className="w-16 h-16 bg-[#0f2d5e] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+          <SafetyCertificateOutlined className="text-white text-3xl" />
         </div>
-        <h2 className="text-2xl font-extrabold text-[#1a3c6e]">Verify OTP</h2>
-        <p className="text-gray-500 mt-2 text-sm leading-relaxed max-w-xs mx-auto">
-          Enter the 6-digit code we sent to
+        <h2 className="text-2xl font-extrabold text-[#0f2d5e]">Verify OTP</h2>
+        <p className="text-gray-500 mt-2 text-sm leading-relaxed max-w-sm mx-auto">
+          Enter the {OTP_LENGTH}-digit code we've sent to your email
+          <br />
+          <span className="text-gray-700 font-medium">{email || "yourname@example.com"}</span>
         </p>
-        {email && (
-          <div className="inline-flex items-center gap-1.5 mt-1 bg-blue-50 border border-blue-100 rounded-full px-3 py-1">
-            <MailOutlined className="text-[#1a3c6e] text-xs" />
-            <span className="text-[#1a3c6e] font-semibold text-xs">{email}</span>
-          </div>
-        )}
       </div>
 
       {/* Card */}

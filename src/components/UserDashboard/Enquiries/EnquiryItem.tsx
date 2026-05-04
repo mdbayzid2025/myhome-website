@@ -31,7 +31,7 @@ export default function EnquiryItem({ enquiry, onClick, isLast }: Props) {
                 <p className="text-[#0f2d5e] font-bold text-sm mt-0.5">{enquiry.price}</p>
                 <p className="text-gray-500 text-xs mt-0.5">
                     Sent to:{" "}
-                    <span className="text-[#00c896] font-medium">{enquiry.sentTo}</span>
+                    <span className="text-[#14b8a6] font-medium">{enquiry.sentTo}</span>
                 </p>
 
                 <div className="mt-3 bg-gray-50 rounded-lg px-3 py-2 text-gray-600 text-xs border border-gray-100 line-clamp-2">
@@ -40,7 +40,7 @@ export default function EnquiryItem({ enquiry, onClick, isLast }: Props) {
 
                 <div className="flex items-center justify-between mt-2">
                     <p className="text-gray-400 text-xs">Agent will reply via email/phone</p>
-                    <button className="flex items-center gap-1 text-[#0f2d5e] font-bold text-xs hover:text-[#00c896] transition-colors">
+                    <button className="flex items-center gap-1 text-[#0f2d5e] font-bold text-xs hover:text-[#14b8a6] transition-colors">
                         View Details <RightOutlined className="text-[10px]" />
                     </button>
                 </div>

@@ -4,34 +4,33 @@ import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 
 export default function LoginForm() {
   const [form] = Form.useForm();
+  const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>, payload: Record<string, string>) => {
-    e.preventDefault();
-    // try {
-    //   // Replace with RTK Query or myFetch
-    //   const response = await fetch("/api/auth/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(payload),
-    //   });
-    //   const data = await response.json();
-    //   if (data?.success) {
-    //     toast.success(data?.message || "Signed in successfully");
-    //   } else {
-    //     if (Array.isArray(data?.error)) {
-    //       data.error.forEach((err: { message: string }) => toast.error(err.message, { id: "login" }));
-    //     } else {
-    //       toast.error(data?.message || "Something went wrong!", { id: "login" });
-    //     }
-    //   }
-    // } catch (err) {
-    //   console.error("LoginForm error:", err);
-    //   toast.error("Unexpected error occurred", { id: "login" });
-    // }
+  const handleSubmit = async (payload: Record<string, string>) => {
+    try {
+      // Mock successful login
+      const mockUser = {
+        user: {
+          id: "1",
+          email: payload.email || "user@example.com",
+          role: "Manager",
+          iat: Date.now(),
+          exp: Date.now() + 86400000,
+        },
+        token: "mock-jwt-token-12345"
+      };
+
+      toast.success("Signed in successfully");
+      router.push("/find-properties"); // Redirect to search/home page
+    } catch (err) {
+      console.error("LoginForm error:", err);
+      toast.error("Unexpected error occurred", { id: "login" });
+    }
   };
 
   return (
@@ -45,9 +44,7 @@ export default function LoginForm() {
         <Form
           form={form}
           layout="vertical"
-          onFinish={(values) =>
-            handleSubmit(new Event("submit") as unknown as React.FormEvent<HTMLFormElement>, values)
-          }
+          onFinish={handleSubmit}
           requiredMark={false}
         >
 
@@ -87,6 +84,7 @@ export default function LoginForm() {
         <Button
           size="large"
           block
+          onClick={() => handleSubmit({ email: 'demo@google.com' })}
           className="!rounded-lg !border-gray-200 !text-gray-700 !font-medium hover:!border-gray-400 flex items-center justify-center gap-2"
           icon={
             <svg viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">

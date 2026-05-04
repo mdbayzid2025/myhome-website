@@ -31,18 +31,6 @@ const testimonials = [
         role: "Property Investor, Birmingham",
         initials: "DR",
     },
-    {
-        quote: "Listed my property and had serious enquiries within 24 hours. The tenant screening info and direct messaging made the whole process seamless.",
-        name: "Emma T.",
-        role: "Landlord, Edinburgh",
-        initials: "ET",
-    },
-    {
-        quote: "The market data and area guides are incredibly useful for investment decisions. Far more detailed than other portals I've used.",
-        name: "David R.",
-        role: "Property Investor, Birmingham",
-        initials: "DR",
-    },
 ];
 
 export default function Testimonials() {
